@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
+
+use App\Customer;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
@@ -16,6 +19,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
+        $test = Customer::all();
+        dd($test);
     }
 
     /**
