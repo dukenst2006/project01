@@ -34,6 +34,7 @@ class CreateCustomerTable extends Migration {
 			$table->string('image')->default('/img/avatar.png');
 			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('updated_at');
+			$table->softDeletes();
 		});
 	}
 
