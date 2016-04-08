@@ -28,7 +28,7 @@ class CreateCustomerTable extends Migration {
 			$table->string('address', 250)->nullable();
 			$table->string('phone', 50)->nullable();
 			$table->string('email', 100)->nullable();
-			$table->boolean('active');
+			$table->boolean('active')->default(1);
 			$table->integer('users_id')->unsigned()->nullable();
 			$table->foreign('users_id')->references('id')->on('users');
 			$table->string('image')->default('/img/avatar.png');
