@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Http\Requests\Backend\Access\Customer\EditCustomerRequest;
+use App\Http\Requests\Backend\Access\Customer\MarkCustomerRequest;
+use App\Http\Requests\Backend\Access\Customer\StoreCustomerRequest;
+use App\Http\Requests\Backend\Access\Customer\CreateCustomerRequest;
+use App\Http\Requests\Backend\Access\Customer\UpdateCustomerRequest;
+use App\Http\Requests\Backend\Access\Customer\DeleteCustomerRequest;
+use App\Http\Requests\Backend\Access\Customer\RestoreCustomerRequest;
+use App\Http\Requests\Backend\Access\Customer\PermanentlyDeleteCustomerRequest;
+
 class CustomerController extends Controller
 {
     /**
@@ -16,11 +25,14 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $customers;
+
     public function index()
     {
-        //
-        $test = Customer::all();
-        dd($test);
+        $customers = Customer::all();
+        return view('backend.index', compact('customers'));
+        //$test = Customer::all();
+        //dd($test);
     }
 
     /**
@@ -28,9 +40,9 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(CreateCustomerRequest $request)
     {
-        //
+        return view('backend.create');
     }
 
     /**
@@ -39,9 +51,10 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCustomerRequest $request)
     {
-        //
+        $this->customers->create();
+        return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
     /**
@@ -63,7 +76,9 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = $this->customers->findOrThrowException($id, true);
+        return view('backend.edit')
+            ->withCustomer($customer);
     }
 
     /**
@@ -73,9 +88,10 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, UpdateCustomerRequest $request)
     {
-        //
+        $this->customers->update($id);
+        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
     /**
@@ -84,8 +100,33 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, DeleteCustomerRequest $request)
     {
-        //
+        $this->customers->destroy($id);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted'));
+    }
+
+    public function delete($id, PermanentlyDeleteCustomerRequest $request)
+    {
+        $this->customers->delete($id);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
+    }
+
+    public function restore($id, RestoreCustomerRequest $request)
+    {
+        $this->users->restore($id);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
+    }
+
+    /**
+     * @param  $id
+     * @param  $status
+     * @param  MarkCustomerRequest $request
+     * @return mixed
+     */
+    public function mark($id, $status, MarkCustomerRequest $request)
+    {
+        $this->customers->mark($id, $status);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 }
