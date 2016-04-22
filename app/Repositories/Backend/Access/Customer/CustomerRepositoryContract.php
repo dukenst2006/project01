@@ -13,7 +13,7 @@ interface CustomerRepositoryContract
      * @param  bool    $withRoles
      * @return mixed
      */
-    public function findOrThrowException($id, $withRoles = false);
+   // public function findOrThrowException($id);
 
     /**
      * @param  $per_page
@@ -22,20 +22,20 @@ interface CustomerRepositoryContract
      * @param  $status
      * @return mixed
      */
-    public function getUsersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc');
+    public function getCustomersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc');
 
     /**
      * @param  $per_page
      * @return \Illuminate\Pagination\Paginator
      */
-    public function getDeletedUsersPaginated($per_page);
+    public function getDeletedCustomersPaginated($per_page);
 
     /**
      * @param  string  $order_by
      * @param  string  $sort
      * @return mixed
      */
-    public function getAllUsers($order_by = 'id', $sort = 'asc');
+    public function getAllCustomers($order_by = 'id', $sort = 'asc');
 
     /**
      * @param $input
@@ -43,7 +43,7 @@ interface CustomerRepositoryContract
      * @param $permissions
      * @return mixed
      */
-    public function create($input, $roles, $permissions);
+    public function create($input);
 
     /**
      * @param $id
@@ -52,7 +52,7 @@ interface CustomerRepositoryContract
      * @param $permissions
      * @return mixed
      */
-    public function update($id, $input, $roles, $permissions);
+    public function update($id, $input);
 
     /**
      * @param  $id
@@ -84,5 +84,5 @@ interface CustomerRepositoryContract
      * @param  $input
      * @return mixed
      */
-    public function updatePassword($id, $input);
+    //public function updatePassword($id, $input);
 }

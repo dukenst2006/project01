@@ -8,7 +8,7 @@ use App\Http\Requests\Request;
  * Class DeleteCustomerRequest
  * @package App\Http\Requests\Backend\Access\Customer
  */
-class DeleteUserRequest extends Request
+class DeleteCustomerRequest extends Request
 {
     /**
      * Determine if the Customer is authorized to make this request.

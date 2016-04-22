@@ -32,7 +32,7 @@ class StoreCustomerRequest extends Request
             'name'                  => 'required',
             'lastname'              => 'required',
             'address'               => 'required',
-            'phone'                  => 'required',
+            'phone'                 => 'required',
             'email'                 => 'required|email|unique:customers',
         ];
     }

@@ -52,13 +52,17 @@
                     </tbody>
                 </table>
             </div>
-
+            {{-- Old Method used
             <div class="pull-left">
                 {!! App\Customer::count() !!} {{ trans_choice('labels.backend.access.customers.table.total', App\Customer::count()) }}
             </div>
+            --}}
+            <div class="pull-left">
+                {!! $customers->total() !!} {{ trans_choice('labels.backend.access.customers.table.total', $customers->total()) }}
+            </div>
 
             <div class="pull-right">
-
+                {!! $customers->render() !!}
             </div>
 
             <div class="clearfix"></div>

@@ -8,7 +8,7 @@ use App\Http\Requests\Request;
  * Class EditCustomerRequest
  * @package App\Http\Requests\Backend\Access\Customer
  */
-class EditUserRequest extends Request
+class EditCustomerRequest extends Request
 {
     /**
      * Determine if the Customer is authorized to make this request.

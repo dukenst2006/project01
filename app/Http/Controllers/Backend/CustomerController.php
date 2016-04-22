@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use Illuminate\Support\Facades\Input;
 use App\Http\Requests\Backend\Access\Customer\EditCustomerRequest;
 use App\Http\Requests\Backend\Access\Customer\MarkCustomerRequest;
 use App\Http\Requests\Backend\Access\Customer\StoreCustomerRequest;
@@ -17,6 +17,7 @@ use App\Http\Requests\Backend\Access\Customer\UpdateCustomerRequest;
 use App\Http\Requests\Backend\Access\Customer\DeleteCustomerRequest;
 use App\Http\Requests\Backend\Access\Customer\RestoreCustomerRequest;
 use App\Http\Requests\Backend\Access\Customer\PermanentlyDeleteCustomerRequest;
+use App\Repositories\Backend\Access\Customer\CustomerRepositoryContract;
 
 class CustomerController extends Controller
 {
@@ -27,12 +28,20 @@ class CustomerController extends Controller
      */
     protected $customers;
 
+    public function __construct(
+        CustomerRepositoryContract $customers
+    )
+    {
+        $this->customers      = $customers;
+    }
+
     public function index()
     {
-        $customers = Customer::all();
-        return view('backend.index', compact('customers'));
-        //$test = Customer::all();
-        //dd($test);
+        return view('backend.index')
+            ->withCustomers($this->customers->getCustomersPaginated(config('access.users.default_per_page'), 1));
+        //$customers = Customer::all();
+        //return view('backend.index', compact('customers'));
+
     }
 
     /**
@@ -53,7 +62,27 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        $this->customers->create();
+        //$customer = new Customer;
+//        $customer = Customer::firstOrNew(array(
+//            $number = $request->input['number'],
+//            $name       = $request->input['name'],
+//            $lastname   = $request->input['lastname'],
+//            $address    = $request->input['address'],
+//            $city       = $request->input['city'],
+//            $email      = $request->input['email'],
+//            $occupation = $request->input['occupation'],
+//            $users_id   = $request->input['users_id']
+//        ));
+
+        $customers = new Customer;
+        $customers->name = $request->name;
+        $customers = Customer::create(['name' => $request->name,
+            'number' => $request->number,
+            'lastname' => $request->lastname,
+            'address' => $request->address,
+            'occupation' => $request->occupation,
+            'users_id' => $request->users_id
+                                    ]);
         return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
@@ -74,9 +103,13 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, EditCustomerRequest $request)
     {
-        $customer = $this->customers->findOrThrowException($id, true);
+       // $customer = $this->customers->findOrThrowException($id, true);
+        $customer = Customer::find($id);
+        if(is_null($customer)){
+            return view(backend.index);
+        }
         return view('backend.edit')
             ->withCustomer($customer);
     }
@@ -90,8 +123,11 @@ class CustomerController extends Controller
      */
     public function update($id, UpdateCustomerRequest $request)
     {
-        $this->customers->update($id);
-        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
+        //$this->customers->update($id);
+        $customer = Customer::find($id);
+        $customer->fill(Input::all());
+        $customer->save();
+        return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
     /**
@@ -114,7 +150,7 @@ class CustomerController extends Controller
 
     public function restore($id, RestoreCustomerRequest $request)
     {
-        $this->users->restore($id);
+        $this->customers->restore($id);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
     }
 
@@ -128,5 +164,11 @@ class CustomerController extends Controller
     {
         $this->customers->mark($id, $status);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
+    }
+
+    public function deactivated()
+    {
+        return view('backend.deactivated')
+            ->withCustomers($this->customers->getUsersPaginated(25, 0));
     }
 }

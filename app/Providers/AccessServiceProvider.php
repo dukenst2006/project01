@@ -80,6 +80,11 @@ class AccessServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            \App\Repositories\Backend\Access\Customer\CustomerRepositoryContract::class,
+            \App\Repositories\Backend\Access\Customer\EloquentCustomerRepository::class
+        );
+
+        $this->app->bind(
             \App\Repositories\Backend\Access\Role\RoleRepositoryContract::class,
             \App\Repositories\Backend\Access\Role\EloquentRoleRepository::class
         );
