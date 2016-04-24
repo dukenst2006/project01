@@ -6,6 +6,15 @@
 Route::get('/', 'FrontendController@index')->name('frontend.index');
 Route::get('macros', 'FrontendController@macros')->name('frontend.macros');
 
+//connect to the admin
+Route::get('/admin', function () {
+
+    if (Auth::check()) {
+        return redirect('/admin/dashboard');
+    }
+    return view('backend.login');
+});
+
 /**
  * These frontend controllers require the user to be logged in
  */

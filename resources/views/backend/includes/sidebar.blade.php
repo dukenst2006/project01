@@ -6,7 +6,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image" />
+                <img src="{!! access()->user()->image !!}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
                 <p>{!! access()->user()->name !!}</p>
@@ -39,6 +39,26 @@
                 <li class="{{ Active::pattern('admin/access/*') }}">
                     <a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.backend.access.title') }}</span></a>
                 </li>
+            @endauth
+
+            @roles(['Administrator', 'Director'])
+            <li class="{{ Active::pattern('admin/customer*') }} treeview">
+                <a href="#">
+                    <span>{{ trans('menus.backend.access.customers.main') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu {{ Active::pattern('admin/customer/*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/customer') }}">
+                        <a href="{!! url('admin/customer') !!}">{{ trans('menus.backend.access.customers.all') }}</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/customer/create') }}">
+                        <a href="{!! url('admin/customer/create') !!}">{{ trans('menus.backend.access.customers.create') }}</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/customer/deactivated') }}">
+                        <a href="{!! url('admin/customer/deactivated') !!}">{{ trans('menus.backend.access.customers.deactivated') }}</a>
+                    </li>
+                </ul>
+            </li>
             @endauth
 
             <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">

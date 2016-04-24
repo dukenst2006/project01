@@ -2,7 +2,8 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{!! route('frontend.index') !!}" class="logo">{!! app_name() !!}</a>
+    {{--<a href="{!! route('frontend.index') !!}" class="logo">{!! app_name() !!}</a> --}}
+    <a href="{!! route('frontend.index') !!}" class="logo">MEC</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -13,7 +14,6 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-
                 @if (config('locale.status') && count(config('locale.languages')) > 1)
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('menus.language-picker.language') }} <span class="caret"></span></a>
@@ -118,7 +118,7 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{!! access()->user()->picture !!}" class="user-image" alt="User Image"/>
+                        <img src="{!! access()->user()->image !!}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{ access()->user()->name }}</span>
                     </a>
@@ -126,7 +126,7 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image" />
+                            <img src="{!! access()->user()->image !!}" class="img-circle" alt="User Image" />
                             <p>
                                 {!! access()->user()->name !!} - {{ trans('roles.web_developer') }}
                                 <small>{{ trans('strings.backend.general.member_since') }} XX/XX/XXXX</small>

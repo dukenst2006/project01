@@ -48,6 +48,15 @@ return [
                 'edit' => 'Éditer un Utilisateur',
                 'main' => 'Utilisateurs',
             ],
+            'customers' => [
+                'all' => 'Tous les Clients',
+                'change-password' => 'Changer le mot de passe',
+                'create' => 'Ajouter un Client',
+                'deactivated' => 'Clients désactivés',
+                'deleted' => 'Clients supprimés',
+                'edit' => 'Éditer un Client',
+                'main' => 'Clients',
+            ],
         ],
 
         'log-viewer' => [
