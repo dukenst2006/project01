@@ -84,7 +84,7 @@
                     <input type="checkbox" value="1" name="status" checked="checked" />
                 </div>
             </div><!--form control-->
-            {{ Form::hidden('users_id', auth()->id()) }}
+            {{ Form::hidden('user_id', auth()->id()) }}
         </div><!-- /.box-body -->
     </div><!--box-->
 

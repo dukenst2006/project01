@@ -24,3 +24,6 @@ Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
         Route::get('restore', 'CustomerController@restore')->name('admin.customer.restore');
         Route::get('mark/{status}', 'CustomerController@mark')->name('admin.customer.mark')->where(['status' => '[0,1]']);
     });
+Route::get('transaction/deposit', 'TransactionController@deposit');
+Route::get('transaction/withdrawl', 'TransactionController@withdrawl');
+Route::get('transaction/{id}/delete', 'TransactionController@delete');

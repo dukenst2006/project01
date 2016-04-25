@@ -29,8 +29,8 @@ class CreateCustomerTable extends Migration {
 			$table->string('phone', 50)->nullable();
 			$table->string('email', 100)->nullable();
 			$table->boolean('status')->unsigned()->default(1);
-			$table->integer('users_id')->unsigned()->nullable();
-			$table->foreign('users_id')->references('id')->on('users');
+			$table->integer('user_id')->unsigned()->nullable();
+			$table->foreign('user_id')->references('id')->on('users');
 			$table->string('image')->default('/img/avatar.png');
 			$table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('updated_at');

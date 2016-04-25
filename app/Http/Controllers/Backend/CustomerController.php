@@ -81,7 +81,7 @@ class CustomerController extends Controller
             'lastname' => $request->lastname,
             'address' => $request->address,
             'occupation' => $request->occupation,
-            'users_id' => $request->users_id
+            'user_id' => $request->user_id
                                     ]);
         return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
