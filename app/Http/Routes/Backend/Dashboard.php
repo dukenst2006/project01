@@ -10,13 +10,13 @@ Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 //Route::get('customer.mark/{status}', 'CustomerController@mark')->name('admin.customer.mark')->where(['status' => '[0,1]']);
 
     Route::resource('customer', 'CustomerController');
-    Route::resource('search', 'QueryController');
+    //Route::resource('search', 'QueryController');
     /**
      * Customer management
      */
     Route::get('customer/deactivated', 'CustomerController@deactivated')->name('admin.customer.deactivated');
     Route::get('customer/deleted', 'CustomerController@deleted')->name('admin.customer.deleted');
-    //Route::get('search', 'CustomerController@search')->name('admin.search');
+    Route::get('search', 'CustomerController@search')->name('admin.search');
 
     /**
      * Specific Customer

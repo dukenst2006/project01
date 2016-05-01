@@ -4,39 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "78510c14c9e76f1053cff54ac99934e8",
-    "content-hash": "6df400137c20261486c482017fc2ff30",
+    "hash": "3c26a520ca555fa605c17614a1e07268",
+    "content-hash": "8a9f651c2d7b9be11d182eb822826751",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
-            "version": "3.8.2",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "e91dfcaa8c15535f45658534fb30bc88b43036da"
+                "reference": "ee9044f15fba9461755ee66cebfbf0ae5829fb95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/e91dfcaa8c15535f45658534fb30bc88b43036da",
-                "reference": "e91dfcaa8c15535f45658534fb30bc88b43036da",
-=======
-    "hash": "45be87c0cff0e7b20301b9b4fcb02856",
-    "content-hash": "c1e689c9c4beacdd3161e1b50526e53d",
-    "packages": [
-        {
-            "name": "arcanedev/log-viewer",
-            "version": "3.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "3ac346b4ca900e5a93397d05eb6ca60251355a9c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/3ac346b4ca900e5a93397d05eb6ca60251355a9c",
-                "reference": "3ac346b4ca900e5a93397d05eb6ca60251355a9c",
->>>>>>> finance
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/ee9044f15fba9461755ee66cebfbf0ae5829fb95",
+                "reference": "ee9044f15fba9461755ee66cebfbf0ae5829fb95",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +33,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.7.x-dev"
+                    "dev-master": "3.10.x-dev"
                 }
             },
             "autoload": {
@@ -86,24 +68,20 @@
                 "log-viewer",
                 "logviewer"
             ],
-<<<<<<< HEAD
-            "time": "2016-04-13 14:58:15"
-=======
-            "time": "2016-03-30 17:53:34"
->>>>>>> finance
+            "time": "2016-04-19 02:06:37"
         },
         {
             "name": "arcanedev/support",
-            "version": "3.7.5",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/Support.git",
-                "reference": "e431142e975e8990ee324ae958e6f195bff5d808"
+                "reference": "bbe6d6b7dc9171c00103e2f4aa0357ce1ac94d1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/e431142e975e8990ee324ae958e6f195bff5d808",
-                "reference": "e431142e975e8990ee324ae958e6f195bff5d808",
+                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/bbe6d6b7dc9171c00103e2f4aa0357ce1ac94d1e",
+                "reference": "bbe6d6b7dc9171c00103e2f4aa0357ce1ac94d1e",
                 "shasum": ""
             },
             "require": {
@@ -149,7 +127,7 @@
                 "laravel",
                 "support"
             ],
-            "time": "2016-02-06 10:30:25"
+            "time": "2016-04-17 18:12:30"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -966,16 +944,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.29",
+            "version": "v5.2.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e3d644eb131f18c5f3d28ff7bc678bc797091f20"
+                "reference": "2fa2797604bf54b06faf7bb139a9fc0d66826fea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e3d644eb131f18c5f3d28ff7bc678bc797091f20",
-                "reference": "e3d644eb131f18c5f3d28ff7bc678bc797091f20",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/2fa2797604bf54b06faf7bb139a9fc0d66826fea",
+                "reference": "2fa2797604bf54b06faf7bb139a9fc0d66826fea",
                 "shasum": ""
             },
             "require": {
@@ -1036,7 +1014,7 @@
             },
             "require-dev": {
                 "aws/aws-sdk-php": "~3.0",
-                "mockery/mockery": "~0.9.2",
+                "mockery/mockery": "~0.9.4",
                 "pda/pheanstalk": "~3.0",
                 "phpunit/phpunit": "~4.1",
                 "predis/predis": "~1.0",
@@ -1054,7 +1032,8 @@
                 "predis/predis": "Required to use the redis cache and queue drivers (~1.0).",
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (2.8.*|3.0.*).",
-                "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (2.8.*|3.0.*)."
+                "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (2.8.*|3.0.*).",
+                "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
             },
             "type": "library",
             "extra": {
@@ -1090,7 +1069,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-04-03 01:43:55"
+            "time": "2016-04-27 13:02:09"
         },
         {
             "name": "laravel/socialite",
@@ -1202,16 +1181,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.20",
+            "version": "1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "e87a786e3ae12a25cf78a71bb07b4b384bfaa83a"
+                "reference": "bd73a91703969a2d20ab4bfbf971d6c2cbe36612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/e87a786e3ae12a25cf78a71bb07b4b384bfaa83a",
-                "reference": "e87a786e3ae12a25cf78a71bb07b4b384bfaa83a",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/bd73a91703969a2d20ab4bfbf971d6c2cbe36612",
+                "reference": "bd73a91703969a2d20ab4bfbf971d6c2cbe36612",
                 "shasum": ""
             },
             "require": {
@@ -1281,7 +1260,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-03-14 21:54:11"
+            "time": "2016-04-28 06:53:12"
         },
         {
             "name": "league/oauth1-client",
@@ -1348,7 +1327,6 @@
         },
         {
             "name": "monolog/monolog",
-<<<<<<< HEAD
             "version": "1.19.0",
             "source": {
                 "type": "git",
@@ -1359,18 +1337,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5f56ed5212dc509c8dc8caeba2715732abb32dbf",
                 "reference": "5f56ed5212dc509c8dc8caeba2715732abb32dbf",
-=======
-            "version": "1.18.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "064b38c16790249488e7a8b987acf1c9d7383c09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/064b38c16790249488e7a8b987acf1c9d7383c09",
-                "reference": "064b38c16790249488e7a8b987acf1c9d7383c09",
->>>>>>> finance
                 "shasum": ""
             },
             "require": {
@@ -1435,11 +1401,7 @@
                 "logging",
                 "psr-3"
             ],
-<<<<<<< HEAD
             "time": "2016-04-12 18:29:35"
-=======
-            "time": "2016-04-02 13:12:58"
->>>>>>> finance
         },
         {
             "name": "mtdowling/cron-expression",
@@ -1534,16 +1496,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v2.0.1",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "ce5be709d59b32dd8a88c80259028759991a4206"
+                "reference": "47b254ea51f1d6d5dc04b9b299e88346bf2369e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ce5be709d59b32dd8a88c80259028759991a4206",
-                "reference": "ce5be709d59b32dd8a88c80259028759991a4206",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/47b254ea51f1d6d5dc04b9b299e88346bf2369e3",
+                "reference": "47b254ea51f1d6d5dc04b9b299e88346bf2369e3",
                 "shasum": ""
             },
             "require": {
@@ -1559,7 +1521,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -1581,7 +1543,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2016-02-28 19:48:28"
+            "time": "2016-04-19 13:41:41"
         },
         {
             "name": "paragonie/random_compat",
@@ -1630,8 +1592,6 @@
                 "random"
             ],
             "time": "2016-03-18 20:34:03"
-<<<<<<< HEAD
-=======
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1681,7 +1641,6 @@
                 }
             ],
             "time": "2015-02-03 12:10:50"
->>>>>>> finance
         },
         {
             "name": "psr/http-message",
@@ -1844,16 +1803,16 @@
         },
         {
             "name": "spatie/db-dumper",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/db-dumper.git",
-                "reference": "49a884dd6521aae140435304051dd762fe27ee69"
+                "reference": "3bfcfc29c8c71b0f2da224c1a0d4720f8a370242"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/49a884dd6521aae140435304051dd762fe27ee69",
-                "reference": "49a884dd6521aae140435304051dd762fe27ee69",
+                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/3bfcfc29c8c71b0f2da224c1a0d4720f8a370242",
+                "reference": "3bfcfc29c8c71b0f2da224c1a0d4720f8a370242",
                 "shasum": ""
             },
             "require": {
@@ -1890,33 +1849,20 @@
                 "mysqldump",
                 "spatie"
             ],
-            "time": "2016-04-03 21:07:38"
+            "time": "2016-04-27 20:49:36"
         },
         {
             "name": "spatie/laravel-backup",
-<<<<<<< HEAD
-            "version": "3.4.2",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "aa300d50873fcec64527773d0baba1279a68a780"
+                "reference": "4969882d625dca8639514ff0c5aa610134412f25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/aa300d50873fcec64527773d0baba1279a68a780",
-                "reference": "aa300d50873fcec64527773d0baba1279a68a780",
-=======
-            "version": "3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "7e215940f2c60ec9994ef0c71d240fda6777609c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/7e215940f2c60ec9994ef0c71d240fda6777609c",
-                "reference": "7e215940f2c60ec9994ef0c71d240fda6777609c",
->>>>>>> finance
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/4969882d625dca8639514ff0c5aa610134412f25",
+                "reference": "4969882d625dca8639514ff0c5aa610134412f25",
                 "shasum": ""
             },
             "require": {
@@ -1965,24 +1911,20 @@
                 "laravel-backup",
                 "spatie"
             ],
-<<<<<<< HEAD
-            "time": "2016-04-13 08:49:01"
-=======
-            "time": "2016-04-03 21:18:17"
->>>>>>> finance
+            "time": "2016-04-27 21:02:51"
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.1",
+            "version": "v5.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421"
+                "reference": "d8db871a54619458a805229a057ea2af33c753e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0697e6aa65c83edf97bb0f23d8763f94e3f11421",
-                "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d8db871a54619458a805229a057ea2af33c753e8",
+                "reference": "d8db871a54619458a805229a057ea2af33c753e8",
                 "shasum": ""
             },
             "require": {
@@ -2022,7 +1964,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2015-06-06 14:19:39"
+            "time": "2016-05-01 08:45:47"
         },
         {
             "name": "symfony/class-loader",
@@ -2860,24 +2802,69 @@
             "time": "2016-03-10 10:34:12"
         },
         {
-            "name": "vlucas/phpdotenv",
-            "version": "v2.2.0",
+            "name": "tom-lingham/searchy",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412"
+                "url": "https://github.com/TomLingham/Laravel-Searchy.git",
+                "reference": "efb1b63e1754cbed4b79dd4948e679360735bcdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/9caf304153dc2288e4970caec6f1f3b3bc205412",
-                "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412",
+                "url": "https://api.github.com/repos/TomLingham/Laravel-Searchy/zipball/efb1b63e1754cbed4b79dd4948e679360735bcdf",
+                "reference": "efb1b63e1754cbed4b79dd4948e679360735bcdf",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TomLingham\\Searchy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Lingham",
+                    "email": "tjlingham@gmail.com"
+                }
+            ],
+            "description": "Laravel Searchy makes user driven searching easy with fuzzy search, basic string matching, Levenshtein Distance and more.",
+            "keywords": [
+                "fuzzy",
+                "laravel",
+                "search"
+            ],
+            "time": "2016-02-21 10:00:34"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "63f37b9395e8041cd4313129c08ece896d06ca8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/63f37b9395e8041cd4313129c08ece896d06ca8e",
+                "reference": "63f37b9395e8041cd4313129c08ece896d06ca8e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8|^5.0"
+                "phpunit/phpunit": "^4.8 || ^5.0"
             },
             "type": "library",
             "extra": {
@@ -2892,7 +2879,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "BSD-3-Clause-Attribution"
             ],
             "authors": [
                 {
@@ -2902,13 +2889,12 @@
                 }
             ],
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
-            "homepage": "http://github.com/vlucas/phpdotenv",
             "keywords": [
                 "dotenv",
                 "env",
                 "environment"
             ],
-            "time": "2015-12-29 15:10:30"
+            "time": "2016-04-15 10:48:49"
         }
     ],
     "packages-dev": [
@@ -3022,33 +3008,29 @@
         },
         {
             "name": "fzaninotto/faker",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3|^7.0"
             },
             "require-dev": {
+                "ext-intl": "*",
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~1.5"
             },
-            "suggest": {
-                "ext-intl": "*"
-            },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5.x-dev"
-                }
+                "branch-alias": []
             },
             "autoload": {
                 "psr-4": {
@@ -3070,7 +3052,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-05-29 06:29:14"
+            "time": "2016-04-29 12:21:54"
         },
         {
             "name": "hamcrest/hamcrest-php",

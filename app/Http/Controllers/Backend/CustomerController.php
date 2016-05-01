@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Customer;
 use App\Transaction;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Backend\Searchy;
 
 use Illuminate\Http\Request;
 
@@ -179,6 +180,17 @@ class CustomerController extends Controller
     {
         return view('backend.deactivated')
             ->withCustomers($this->customers->getUsersPaginated(25, 0));
+    }
+
+    public function search()
+    {
+        // Gets the query string from our form submission
+        //$query = Request::input('search');
+        $customs = Searchy::customers('number', 'name', 'lastname')->query('Jean')->get();
+        //$customerSearch = DB::table('customers')->where('number', 'LIKE', '%' . $query . '%');
+       dd($customs);
+        // returns a view and passes the view the customer and the original query.
+        return view('backend.search', compact('customerSearch', 'query'));
     }
     
 }
