@@ -57,6 +57,17 @@ return [
                 'edit' => 'Éditer un Client',
                 'main' => 'Clients',
             ],
+            'transactions' => [
+                'all' => 'Toutes les Transactions',
+                'change-password' => 'Changer le mot de passe',
+                'create' => 'Créer un Client',
+                'deactivated' => 'Transactions désactivés',
+                'deleted' => 'Supprimé transaction',
+                'edit' => 'Éditer un Transaction',
+                'main' => 'Transactions',
+                'deposit' => 'Faire un dépot',
+                'withdrawl' => 'Faire un retrait',
+            ],
         ],
 
         'log-viewer' => [

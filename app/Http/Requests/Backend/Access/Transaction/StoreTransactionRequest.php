@@ -28,12 +28,7 @@ class StoreTransactionRequest extends Request
     public function rules()
     {
         return [
-            'number'                => 'required',
-            'name'                  => 'required',
-            'lastname'              => 'required',
-            'address'               => 'required',
-            'phone'                 => 'required',
-            'email'                 => 'required|email|unique:customers',
+            'amount'                => 'required',
         ];
     }
 }

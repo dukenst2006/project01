@@ -43,6 +43,24 @@ class RoleTableSeeder extends Seeder
         $user->updated_at = Carbon::now();
         $user->save();
 
+        //id = 3
+        $role_model       = config('access.role');
+        $director         = new $role_model;
+        $director->name       = 'Director';
+        $director->sort       = 3;
+        $director->created_at = Carbon::now();
+        $director->updated_at = Carbon::now();
+        $director->save();
+
+        //id = 4
+        $role_model       = config('access.role');
+        $cashier         = new $role_model;
+        $cashier->name       = 'Cashier';
+        $cashier->sort       = 4;
+        $cashier->created_at = Carbon::now();
+        $cashier->updated_at = Carbon::now();
+        $cashier->save();
+
         if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }

@@ -24,6 +24,7 @@
                   </span>
             </div>
         </form>
+
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
@@ -56,6 +57,26 @@
                     </li>
                     <li class="{{ Active::pattern('admin/customer/deactivated') }}">
                         <a href="{!! url('admin/customer/deactivated') !!}">{{ trans('menus.backend.access.customers.deactivated') }}</a>
+                    </li>
+                </ul>
+            </li>
+            @endauth
+
+            @roles(['Administrator', 'Director', 'Cashier'])
+            <li class="{{ Active::pattern('admin/transaction*') }} treeview">
+                <a href="#">
+                    <span>{{ trans('menus.backend.access.transactions.main') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu {{ Active::pattern('admin/transaction/*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/transaction/all') }}">
+                        <a href="{!! url('admin/transaction/all') !!}">{{ trans('menus.backend.access.transactions.all') }}</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/transaction/deposit') }}">
+                        <a href="{!! url('admin/transaction/deposit') !!}">{{ trans('menus.backend.access.transactions.deposit') }}</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/transaction/withdrawl') }}">
+                        <a href="{!! url('admin/transaction/withdrawl') !!}">{{ trans('menus.backend.access.transactions.withdrawl') }}</a>
                     </li>
                 </ul>
             </li>

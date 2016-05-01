@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Backend\Access\Customer;
+namespace App\Repositories\Backend\Access\Transaction;
 
-use App\Customer;
+use App\Transaction;
 use App\Exceptions\GeneralException;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
 use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
@@ -12,17 +12,9 @@ use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUser
  * Class EloquentUserRepository
  * @package App\Repositories\Customer
  */
-class EloquentCustomerRepository implements CustomerRepositoryContract
+class EloquentTransactionRepository implements TransactionRepositoryContract
 {
-    /**
-     * @var RoleRepositoryContract
-     */
-    //protected $role;
-
-    /**
-     * @var FrontendUserRepositoryContract
-     */
-    protected $customer;
+    protected $transaction;
 
     /**
      * @param RoleRepositoryContract $role
@@ -37,24 +29,9 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
        // $this->customer = $customer;
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function findCustomerByID($id){
-       return Customer::find($id)->first();
-   }
-
-    /**
-     * @param  $per_page
-     * @param  string      $order_by
-     * @param  string      $sort
-     * @param  int         $status
-     * @return mixed
-     */
-    public function getCustomersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc')
+    public function getTransactionsPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc')
     {
-        return Customer::where('status', $status)
+        return Transaction::where('status', $status)
             ->orderBy($order_by, $sort)
             ->paginate($per_page);
     }
@@ -63,9 +40,9 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
      * @param  $per_page
      * @return \Illuminate\Pagination\Paginator
      */
-    public function getDeletedCustomersPaginated($per_page)
+    public function getDeletedTransactionsPaginated($per_page)
     {
-        return Customer::onlyTrashed()
+        return Transaction::onlyTrashed()
             ->paginate($per_page);
     }
 
@@ -74,9 +51,9 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
      * @param  string  $sort
      * @return mixed
      */
-    public function getAllCustomers($order_by = 'id', $sort = 'asc')
+    public function getAllTransactions($order_by = 'id', $sort = 'asc')
     {
-        return Customer::orderBy($order_by, $sort)
+        return Transaction::orderBy($order_by, $sort)
             ->get();
     }
 
@@ -90,9 +67,9 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
      */
     public function create($input)
     {
-        $customer = $this->createCustomerStub($input);
+        $transaction = $this->createTransactionStub($input);
 
-        if ($customer->save()) {
+        if ($transaction->save()) {
             //User Created, Validate Roles
             //$this->validateRoleAmount($user, $roles['assignees_roles']);
 
@@ -176,14 +153,14 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
      */
     public function delete($id)
     {
-        $customer = $this->findOrThrowException($id, true);
+        $transaction = $this->findOrThrowException($id, true);
 
         //Detach all roles & permissions
         //$customer->detachRoles($customer->roles);
         //$user->detachPermissions($user->permissions);
 
         try {
-            $customer->forceDelete();
+            $transaction->forceDelete();
         } catch (\Exception $e) {
             throw new GeneralException($e->getMessage());
         }
@@ -196,9 +173,9 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
      */
     public function restore($id)
     {
-        $customer = $this->findOrThrowException($id);
+        $transaction = $this->findOrThrowException($id);
 
-        if ($customer->restore()) {
+        if ($transaction->restore()) {
             return true;
         }
 
@@ -217,40 +194,14 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
             throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
         }
 
-        $customer         = $this->find($id);
-        $customer->status = $status;
+        $transaction         = $this->find($id);
+        $transaction->status = $status;
 
-        if ($customer->save()) {
+        if ($transaction->save()) {
             return true;
         }
 
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
 
-    /**
-     * Check to make sure at lease one role is being applied or deactivate user
-     *
-     * @param  $user
-     * @param  $roles
-     * @throws UserNeedsRolesException
-     */
-
-
-    /**
-     * @param  $input
-     * @return mixed
-     */
-    private function createCustomerStub($input)
-    {
-        $customer                = new Customer;
-        $customer->number        = $input['number'];
-        $customer->name          = $input['name'];
-        $customer->lastname      = $input['lastname'];
-        $customer->address       = $input['address'];
-        $customer->city          = $input['city'];
-        $customer->email         = $input['email'];
-        $customer->occupation    = $input['occupation'];
-        $customer->status        = isset($input['status']) ? 1 : 0;
-        return $customer;
-    }
 }

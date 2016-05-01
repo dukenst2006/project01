@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Backend\Access\Customer;
+namespace App\Repositories\Backend\Access\Transaction;
 
 /**
  * Interface UserRepositoryContract
  * @package App\Repositories\User
  */
-interface CustomerRepositoryContract
+interface TransactionRepositoryContract
 {
     /**
      * @param  $id
@@ -22,20 +22,20 @@ interface CustomerRepositoryContract
      * @param  $status
      * @return mixed
      */
-    public function getCustomersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc');
+    public function getTransactionsPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc');
 
     /**
      * @param  $per_page
      * @return \Illuminate\Pagination\Paginator
      */
-    public function getDeletedCustomersPaginated($per_page);
+    public function getDeletedTransactionsPaginated($per_page);
 
     /**
      * @param  string  $order_by
      * @param  string  $sort
      * @return mixed
      */
-    public function getAllCustomers($order_by = 'id', $sort = 'asc');
+    public function getAllTransactions($order_by = 'id', $sort = 'asc');
 
     /**
      * @param $input
@@ -81,6 +81,8 @@ interface CustomerRepositoryContract
 
     /**
      * @param  $id
+     * @param  $input
+     * @return mixed
      */
-    public function findCustomerByID($id);
+    //public function updatePassword($id, $input);
 }

@@ -39,7 +39,7 @@
                     @foreach ($customers as $customer)
                         <tr>
                             <td>{!! $customer->id !!}</td>
-                            <td>{!! $customer->name.' '.$customer->lastname !!}</td>
+                            <td>{{ link_to_route('admin.customer.profile', $customer->name.' '.$customer->lastname, $customer->id ) }} </td>
                             <td>{!! link_to("mailto:".$customer->email, $customer->email) !!}</td>
                             <td>{!! $customer->occupation !!}</td>
                             <td>{!! $customer->phone !!}</td>

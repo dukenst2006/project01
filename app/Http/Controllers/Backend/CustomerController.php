@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Customer;
+use App\Transaction;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\Backend\Access\Customer\EditCustomerRequest;
 use App\Http\Requests\Backend\Access\Customer\MarkCustomerRequest;
@@ -94,7 +96,14 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        //$customer = DB::table('customers')->find($id); //Customer::find($id)->get();
+        $customer = Customer::find($id);
+        //$transactions = DB::table('transactions')->where('customer_id', '=', $id)->get();
+        $transactions = Transaction::where('customer_id', '=', $id)->limit(10)->get();
+        //$balance = DB::table('transactions')->where('customer_id', '=', $id)->sum('amount');
+        $balance = Transaction::where('customer_id', '=',$id)->sum('amount');
+        //dd($balance);
+        return view('backend.profile', compact('customer','transactions', 'balance'));
     }
 
     /**
@@ -171,4 +180,5 @@ class CustomerController extends Controller
         return view('backend.deactivated')
             ->withCustomers($this->customers->getUsersPaginated(25, 0));
     }
+    
 }

@@ -136,6 +136,8 @@ return [
                 'no_roles' => 'Pas de Rôle à affecter.',
                 'permissions' => 'Permissions',
                 'permission_check' => "La sélection d'une permission sélectionne aussi ses dépendances s'il y en a.",
+                'recent_transaction' => 'Transactions récentes',
+                'search' => 'Resultat de la recherche.',
 
                 'table' => [
                     'confirmed' => 'Confirmé',
@@ -151,6 +153,35 @@ return [
                     'total' => 'Client total|Clients total',
                 ],
             ],
+
+            'transactions' => [
+                'active' => 'Transactions actives',
+                'create' => 'Créer une transaction',
+                'deactivated' => 'Transactions désactivées',
+                'deleted' => 'Transactions supprimées',
+                'edit' => 'Éditer Transaction',
+                'management' => 'Gestion des Transactions',
+                'permissions' => 'Permissions',
+                'permission_check' => "La sélection d'une permission sélectionne aussi ses dépendances s'il y en a.",
+                'deposit' => 'Ajouter Dépot',
+                'withdrawl' => 'Faire un Rétrait',
+
+                'table' => [
+                    'confirmed' => 'Confirmé',
+                    'created' => 'Création',
+                    'amount' => 'Montant',
+                    'last_updated' => 'Mise à jour',
+                    'name' => 'Nom',
+                    'no_deactivated' => "Pas de Transactions désactivées",
+                    'no_deleted' => "Pas de Transactions supprimés",
+                    'type' => 'Type de transaction',
+                    'authorised' => 'Autorisé par',
+                    'reference' => 'Reference No',
+                     'total' => 'Transaction total|Transactions total',
+                ],
+            ],
+
+
         ],
     ],
 

@@ -16,8 +16,10 @@ class Customer extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    
     public  function transaction(){
-        return $this->hasMany('Transaction');
+        return $this->hasMany('App\Transaction');
     }
 
 }

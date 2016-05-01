@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Transactiontype extends Model
 {
     public function transaction(){
-        return $this->belongsTo('Transaction');
+        return $this->belongsTo('App\Transaction');
     }
 }
