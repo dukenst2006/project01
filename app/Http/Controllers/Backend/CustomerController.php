@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Customer;
 use App\Transaction;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Backend\Searchy;
-
+use Searchy;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -54,7 +52,9 @@ class CustomerController extends Controller
      */
     public function create(CreateCustomerRequest $request)
     {
-        return view('backend.create');
+        //Generate Account number
+        $accountNumber = 'AAA-'. rand();
+        return view('backend.create', compact('accountNumber'));
     }
 
     /**
@@ -103,8 +103,9 @@ class CustomerController extends Controller
         $transactions = Transaction::where('customer_id', '=', $id)->limit(10)->get();
         //$balance = DB::table('transactions')->where('customer_id', '=', $id)->sum('amount');
         $balance = Transaction::where('customer_id', '=',$id)->sum('amount');
-        //dd($balance);
-        return view('backend.profile', compact('customer','transactions', 'balance'));
+        $TransactionRef = 'REF-'. rand();
+        //dd($TransactionRef);
+        return view('backend.profile', compact('customer','transactions', 'balance', 'TransactionRef'));
     }
 
     /**
@@ -185,10 +186,9 @@ class CustomerController extends Controller
     public function search()
     {
         // Gets the query string from our form submission
-        //$query = Request::input('search');
-        $customs = Searchy::customers('number', 'name', 'lastname')->query('Jean')->get();
-        //$customerSearch = DB::table('customers')->where('number', 'LIKE', '%' . $query . '%');
-       dd($customs);
+        //$query = $request->input('search');
+        $query = Input::get('q');
+        $customerSearch = Searchy::customers('number', 'name', 'lastname')->query($query)->get();
         // returns a view and passes the view the customer and the original query.
         return view('backend.search', compact('customerSearch', 'query'));
     }

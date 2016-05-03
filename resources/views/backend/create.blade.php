@@ -25,7 +25,7 @@
             <div class="form-group">
                 {!! Form::label('number', trans('validation.attributes.backend.access.customers.number'), ['class' => 'col-lg-2 control-label']) !!}
                 <div class="col-lg-10">
-                    {!! Form::text('number', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number')]) !!}
+                    {!! Form::text('number', $accountNumber, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number'), 'value' => 'AAA-000001' ]) !!}
                 </div>
             </div><!--form control-->
 

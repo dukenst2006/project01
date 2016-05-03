@@ -16,14 +16,15 @@
         </div>
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        {!! Form::open(['route' => 'admin.search', 'class' => 'sidebar-form', 'role' => 'form', 'method' => 'get']) !!}
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="{{ trans('strings.backend.general.search_placeholder') }}"/>
+                {{--{!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => trans('strings.backend.general.search_placeholder')]) !!}--}}
                   <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                   </span>
             </div>
-        </form>
+            {!! Form::close() !!}
 
         <!-- /.search form -->
 

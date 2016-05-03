@@ -41,6 +41,15 @@ return [
             'restored' => "L'utilisateur a été ré-activé.",
             'updated' => "Utilisateur mis à jour avec succès.",
             'updated_password' => "Le mot de passe utilisateur a été mis à jour avec succès.",
+        ],
+
+        'transactions' => [
+            'created' => "Transaction créé avec succès.",
+            'deleted' => "Transaction supprimé avec succès.",
+            'deleted_permanently' => "Transaction a été supprimé définitivement.",
+            'restored' => "Transaction a été ré-activé.",
+            'updated' => "Transaction mis à jour avec succès.",
+            'failed'  => "Ce compte n'a pas assez de fond pour effectuer cette transaction",
         ]
     ],
 ];

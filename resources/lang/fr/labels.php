@@ -138,18 +138,19 @@ return [
                 'permission_check' => "La sélection d'une permission sélectionne aussi ses dépendances s'il y en a.",
                 'recent_transaction' => 'Transactions récentes',
                 'search' => 'Resultat de la recherche.',
+                'noresult' => 'Aucun résultat trouvé pour ',
 
                 'table' => [
-                    'confirmed' => 'Confirmé',
-                    'created' => 'Création',
+                    'confirmed' => 'Occupation',
+                    'created' => 'Date transaction',
                     'email' => 'Email',
                     'id' => 'ID',
-                    'last_updated' => 'Mise à jour',
+                    'last_updated' => 'Date Mise à jour',
                     'name' => 'Nom',
                     'no_deactivated' => "Pas d'Clients désactivés",
                     'no_deleted' => "Pas d'Clients supprimés",
-                    'other_permissions' => 'Autres permissions',
-                    'roles' => 'Rôles',
+                    'other_permissions' => 'Adresse',
+                    'roles' => 'Telephone',
                     'total' => 'Client total|Clients total',
                 ],
             ],
@@ -165,6 +166,7 @@ return [
                 'permission_check' => "La sélection d'une permission sélectionne aussi ses dépendances s'il y en a.",
                 'deposit' => 'Ajouter Dépot',
                 'withdrawl' => 'Faire un Rétrait',
+                'date' => 'Date Transaction',
 
                 'table' => [
                     'confirmed' => 'Confirmé',

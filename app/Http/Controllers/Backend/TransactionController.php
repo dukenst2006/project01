@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Transaction;
 use App\Transactiontype;
 use App\Customer;
+use DB;
 use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\Backend\Access\Transaction\EditTransactionRequest;
-use App\Http\Requests\Backend\Access\Transaction\StoreCustomerRequest;
+use App\Http\Requests\Backend\Access\Transaction\StoreTransactionRequest;
 use App\Http\Requests\Backend\Access\Transaction\CreateTransactionRequest;
 use App\Http\Requests\Backend\Access\Transaction\UpdateTransactionRequest;
 use App\Http\Requests\Backend\Access\Transaction\DeleteTransactionRequest;
@@ -65,18 +66,41 @@ class TransactionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCustomerRequest $request)
+    public function store(StoreTransactionRequest $request)
     {
-        $customers = new Customer;
-        $customers->name = $request->name;
-        $customers = Customer::create(['name' => $request->name,
-            'number' => $request->number,
-            'lastname' => $request->lastname,
-            'address' => $request->address,
-            'occupation' => $request->occupation,
+        //$deposit = new Transaction;
+        //$deposit->amount = $request->amount;
+        //dd($request->created_at);
+        $deposit = Transaction::create(['amount' => abs($request->amount),
+            'reference' => $request->reference,
+            'created_at' => $request->created_at,
+            'transactiontype_id' => $request->transactiontype_id,
+            'customer_id'       =>  $request->customer_id,
             'user_id' => $request->user_id
         ]);
-        return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.created'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.created'));
+    }
+
+    // withdrawl Method
+    public function withdrawl(StoreTransactionRequest $request)
+    {
+        $balance = DB::table('transactions')->where('customer_id', '=', $request->customer_id)->sum('amount');
+        $amountrequest = abs($request->amount);
+        // Test if customer have enouth fund to make the withdrawl
+        if($balance > $amountrequest) {
+            $withdrawl = Transaction::create(['amount' => abs($request->amount) * -1,
+                'reference' => $request->reference,
+                'created_at' => $request->created_at,
+                'transactiontype_id' => $request->transactiontype_id,
+                'customer_id' => $request->customer_id,
+                'user_id' => $request->user_id
+            ]);
+            return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.created'));
+        } else
+        {
+            return redirect()->back()->withFlashDanger(trans('alerts.backend.transactions.failed'));
+        }
+
     }
 
     /**
