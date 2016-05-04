@@ -23,7 +23,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/admin/dashboard';
 
     //protected $username = 'username';
 
@@ -32,7 +32,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectAfterLogout = '/';
+    protected $redirectAfterLogout = '/admin';
 
     /**
      * @param UserRepositoryContract $user

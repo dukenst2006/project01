@@ -19,7 +19,8 @@ class FrontendController extends Controller
             'test' => 'it works!',
         ]);
 
-        return view('frontend.index');
+        //return view('frontend.index');
+        return redirect()->route('admin.dashboard');
     }
 
     /**

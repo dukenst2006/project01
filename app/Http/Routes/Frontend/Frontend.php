@@ -4,6 +4,9 @@
  * Frontend Controllers
  */
 Route::get('/', 'FrontendController@index')->name('frontend.index');
+//Route::get('/', function(){
+//    return redirect()->route('admin.dashboard');
+//});
 Route::get('macros', 'FrontendController@macros')->name('frontend.macros');
 
 //connect to the admin

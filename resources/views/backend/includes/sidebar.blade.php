@@ -34,18 +34,18 @@
 
             <!-- Optionally, you can add icons to the links -->
             <li class="{{ Active::pattern('admin/dashboard') }}">
-                <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
+                <a href="{!! route('admin.dashboard') !!}"><i class="fa fa-dashboard"></i><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
 
             @permission('view-access-management')
                 <li class="{{ Active::pattern('admin/access/*') }}">
-                    <a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.backend.access.title') }}</span></a>
+                    <a href="{!!url('admin/access/users')!!}"><i class="fa fa-unlock-alt"></i><span>{{ trans('menus.backend.access.title') }}</span></a>
                 </li>
             @endauth
 
             @roles(['Administrator', 'Director'])
             <li class="{{ Active::pattern('admin/customer*') }} treeview">
-                <a href="#">
+                <a href="#"><i class="fa fa-users"></i>
                     <span>{{ trans('menus.backend.access.customers.main') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -65,7 +65,7 @@
 
             @roles(['Administrator', 'Director', 'Cashier'])
             <li class="{{ Active::pattern('admin/transaction*') }} treeview">
-                <a href="#">
+                <a href="#"><i class="fa fa-money"></i>
                     <span>{{ trans('menus.backend.access.transactions.main') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
@@ -84,7 +84,7 @@
             @endauth
 
             <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
-                <a href="#">
+                <a href="#"><i class="fa fa-signal"></i>
                     <span>{{ trans('menus.backend.log-viewer.main') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>

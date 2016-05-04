@@ -43,7 +43,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">About Me</h3>
                     </div><!-- /.box-header -->
-                    
+
                 </div><!-- /.box -->
             </div><!-- /.col -->
             <div class="col-md-9">
