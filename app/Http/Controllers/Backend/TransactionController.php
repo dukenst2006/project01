@@ -153,22 +153,22 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, DeleteCustomerRequest $request)
+    public function destroy($id, DeleteTransactionRequest $request)
     {
-        $this->customers->destroy($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted'));
+        $this->transactions->destroy($id);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.deleted'));
     }
 
-    public function delete($id, PermanentlyDeleteCustomerRequest $request)
+    public function delete($id, PermanentlyDeleteTransactionRequest $request)
     {
         $this->customers->delete($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.deleted_permanently'));
     }
 
-    public function restore($id, RestoreCustomerRequest $request)
+    public function restore($id, RestoreTransactionRequest $request)
     {
         $this->customers->restore($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.restored'));
     }
 
     /**
@@ -177,15 +177,15 @@ class TransactionController extends Controller
      * @param  MarkCustomerRequest $request
      * @return mixed
      */
-    public function mark($id, $status, MarkCustomerRequest $request)
+    public function mark($id, $status, MarkTransactionRequest $request)
     {
-        $this->customers->mark($id, $status);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
+        $this->transactions->mark($id, $status);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.updated'));
     }
 
     public function deactivated()
     {
         return view('backend.deactivated')
-            ->withCustomers($this->customers->getUsersPaginated(25, 0));
+            ->withCustomers($this->transaction->getUsersPaginated(25, 0));
     }
 }

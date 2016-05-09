@@ -10,12 +10,16 @@
 
         <!-- Meta -->
         <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="author" content="@yield('meta_author', 'Thelemaque Dukens')">
         @yield('meta')
 
         <!-- Styles -->
         @yield('before-styles-end')
         {!! Html::style(elixir('css/backend.css')) !!}
+        <link href="{{ URL::asset('css/ionicons.min.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('css/sweetalert.css') }}" rel="styleshe">
+        <link href="{{ URL::asset('plugins/morris/morris.css') }}" rel="stylesheet">
         @yield('after-styles-end')
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -58,6 +62,12 @@
 
     @yield('before-scripts-end')
     {!! HTML::script(elixir('js/backend.js')) !!}
+    {{ HTML::script('js/jquery-ui.min.js') }}
+    {{ HTML::script('js/moment.min.js') }}
+    {{ HTML::script('js/raphael-min.js') }}
+    {{ HTML::script('js/sweetalert.min.js') }}
+    @include('sweet::alert')
+    {{ HTML::script('plugins/morris/morris.min.js') }}
     @yield('after-scripts-end')
     </body>
 </html>

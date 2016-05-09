@@ -134,12 +134,8 @@ class EloquentTransactionRepository implements TransactionRepositoryContract
      */
     public function destroy($id)
     {
-        if (auth()->id() == $id) {
-            throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
-        }
-
-        $customer = $this->findOrThrowException($id);
-        if ($customer->delete()) {
+        $transaction = Transaction::find($id);
+        if ($transaction->delete()) {
             return true;
         }
 
@@ -153,7 +149,7 @@ class EloquentTransactionRepository implements TransactionRepositoryContract
      */
     public function delete($id)
     {
-        $transaction = $this->findOrThrowException($id, true);
+        $transaction = Transaction::find($id, true);
 
         //Detach all roles & permissions
         //$customer->detachRoles($customer->roles);
@@ -173,7 +169,7 @@ class EloquentTransactionRepository implements TransactionRepositoryContract
      */
     public function restore($id)
     {
-        $transaction = $this->findOrThrowException($id);
+        $transaction = Transaction::find($id);
 
         if ($transaction->restore()) {
             return true;
@@ -190,11 +186,7 @@ class EloquentTransactionRepository implements TransactionRepositoryContract
      */
     public function mark($id, $status)
     {
-        if (access()->id() == $id && $status == 0) {
-            throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
-        }
-
-        $transaction         = $this->find($id);
+        $transaction         = Transaction::find($id);
         $transaction->status = $status;
 
         if ($transaction->save()) {

@@ -26,8 +26,9 @@
                     <tr>
                         <th>{{ trans('labels.backend.access.customers.table.id') }}</th>
                         <th>{{ trans('labels.backend.access.customers.table.name') }}</th>
-                        <th>{{ trans('labels.backend.access.customers.table.email') }}</th>
-                        <th>{{ trans('labels.backend.access.customers.table.confirmed') }}</th>
+                        <th>{{ trans('labels.backend.access.customers.table.identity') }}</th>
+                        <th>{{ trans('labels.backend.access.customers.table.gender') }}</th>
+                        <th>{{ trans('labels.backend.access.customers.table.occupation') }}</th>
                         <th>{{ trans('labels.backend.access.customers.table.roles') }}</th>
                         <th>{{ trans('labels.backend.access.customers.table.other_permissions') }}</th>
                         <th class="visible-lg">{{ trans('labels.backend.access.customers.table.created') }}</th>
@@ -40,13 +41,30 @@
                         <tr>
                             <td>{!! $customer->id !!}</td>
                             <td>{{ link_to_route('admin.customer.profile', $customer->name.' '.$customer->lastname, $customer->id ) }} </td>
-                            <td>{!! link_to("mailto:".$customer->email, $customer->email) !!}</td>
+                            {{--<td>{!! link_to("mailto:".$customer->email, $customer->email) !!}</td>--}}
+                            <td>{!! $customer->cin !!}</td>
+                            <td>{!! $customer->sex !!}</td>
                             <td>{!! $customer->occupation !!}</td>
                             <td>{!! $customer->phone !!}</td>
                             <td>{!! $customer->address !!}</td>
-                            <td class="visible-lg">{!! $customer->created_at->diffForHumans() !!}</td>
+                            <td class="visible-lg">{!! $customer->created_at !!}</td>
                             <td class="visible-lg">{!! $customer->updated_at->diffForHumans() !!}</td>
-                            <td>{!! $customer->action_buttons !!}</td>
+                            {{--<td>{!! $customer->action_buttons !!}</td>--}}
+                            <td>
+                                <a href="{{ url('/admin/customer/'.$customer->id.'/edit') }}" class="btn btn-xs btn-primary">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <form action="{{ url('/admin/customer/'.$customer->id) }}" method="POST" id="myform" style="display:inline;">
+                                    {!! csrf_field() !!}
+                                    {!! method_field('DELETE') !!}
+                                    {{--<button type="submit" class="btn btn-xs btn-danger">--}}
+                                        {{--<i class="fa fa-trash"></i>--}}
+                                    {{--</button>--}}
+                                    <button id="delete" class="btn btn-xs btn-danger" type="submit" onclick="if(!confirm('Voulez-vous Supprimer cet utilisateur?')) return false;">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -68,4 +86,5 @@
             <div class="clearfix"></div>
         </div><!-- /.box-body -->
     </div><!--box-->
+
 @stop

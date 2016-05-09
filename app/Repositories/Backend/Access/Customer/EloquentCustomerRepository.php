@@ -157,11 +157,7 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
      */
     public function destroy($id)
     {
-        if (auth()->id() == $id) {
-            throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
-        }
-
-        $customer = $this->findOrThrowException($id);
+        $customer = Customer::find($id);
         if ($customer->delete()) {
             return true;
         }
@@ -213,10 +209,6 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
      */
     public function mark($id, $status)
     {
-        if (access()->id() == $id && $status == 0) {
-            throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
-        }
-
         $customer         = $this->find($id);
         $customer->status = $status;
 
@@ -246,6 +238,8 @@ class EloquentCustomerRepository implements CustomerRepositoryContract
         $customer->number        = $input['number'];
         $customer->name          = $input['name'];
         $customer->lastname      = $input['lastname'];
+        $customer->cin           = $input['cin'];
+        $customer->sex           = $input['sex'];
         $customer->address       = $input['address'];
         $customer->city          = $input['city'];
         $customer->email         = $input['email'];

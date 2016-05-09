@@ -160,6 +160,7 @@ return [
                     'image' => 'Image profile',
                     'city'  => 'Ville',
                     'address'  => 'Adresse',
+                    'image'    =>   'Image',
                 ],
 
             ],

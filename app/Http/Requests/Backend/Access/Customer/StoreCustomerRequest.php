@@ -34,6 +34,7 @@ class StoreCustomerRequest extends Request
             'address'               => 'required',
             'phone'                 => 'required',
             'email'                 => 'required|email|unique:customers',
+            'image'                 => 'mimes:jpeg,jpg,bmp,png|max:10000',
         ];
     }
 }

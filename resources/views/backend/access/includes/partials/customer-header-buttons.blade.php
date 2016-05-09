@@ -4,15 +4,15 @@
             {{ trans('menus.backend.access.customers.main') }} <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ route('admin.access.users.index') }}">{{ trans('menus.backend.access.customers.all') }}</a></li>
+            <li><a href="{!! url('admin/customer') !!}">{{ trans('menus.backend.access.customers.all') }}</a></li>
 
             @permission('create-users')
-            <li><a href="{{ route('admin.access.users.create') }}">{{ trans('menus.backend.access.customers.create') }}</a></li>
+            <li><a href="{!! url('admin/customer/create') !!}">{{ trans('menus.backend.access.customers.create') }}</a></li>
             @endauth
 
             <li class="divider"></li>
-            <li><a href="{{ route('admin.access.users.deactivated') }}">{{ trans('menus.backend.access.customers.deactivated') }}</a></li>
-            <li><a href="{{ route('admin.access.users.deleted') }}">{{ trans('menus.backend.access.customers.deleted') }}</a></li>
+            <li><a href="{{ url('admin/customer/deactivated') }}">{{ trans('menus.backend.access.customers.deactivated') }}</a></li>
+            <li><a href="{{ url('admin/customer/deactivated') }}">{{ trans('menus.backend.access.customers.deleted') }}</a></li>
         </ul>
     </div><!--btn group-->
 </div><!--pull right-->

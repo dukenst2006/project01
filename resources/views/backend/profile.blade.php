@@ -110,7 +110,7 @@
                                     <div class="form-group">
                                         {!! Form::label('amount', trans('labels.backend.access.transactions.table.amount'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            {!! Form::number('amount', null, ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.amount')]) !!}
+                                            {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount')]) !!}
                                         </div>
                                     </div><!--form control-->
 
@@ -165,7 +165,7 @@
                                     <div class="form-group">
                                         {!! Form::label('amount', trans('labels.backend.access.transactions.table.amount'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            {!! Form::number('amount', null, ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.amount')]) !!}
+                                            {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount')]) !!}
                                         </div>
                                     </div><!--form control-->
 

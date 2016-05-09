@@ -45,7 +45,17 @@
                             <td>{!! App\Models\Access\User\User::find($transaction->user_id)->name !!}</td>
                             <td>{!! $transaction->reference !!}</td>
                             <td class="visible-lg">{!! $transaction->updated_at->diffForHumans() !!}</td>
-                            <td>{!! $transaction->action_buttons !!}</td>
+                            <td><form action="{{ url('/admin/transaction/'.$transaction->id.'/delete') }}" method="POST" id="myform" style="display:inline;">
+                                    {!! csrf_field() !!}
+                                    {!! method_field('DELETE') !!}
+                                    {{--<button type="submit" class="btn btn-xs btn-danger">--}}
+                                    {{--<i class="fa fa-trash"></i>--}}
+                                    {{--</button>--}}
+                                    <button id="delete" class="btn btn-xs btn-danger" type="submit" onclick="if(!confirm('Voulez-vous Supprimer cette transaction ?')) return false;">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -79,6 +79,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Tableau de bord',
             'general' => 'Général',
+            'settings' => 'Configurations',
         ],
     ],
 

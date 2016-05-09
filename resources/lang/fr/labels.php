@@ -27,6 +27,7 @@ return [
         'none' => 'Aucun',
         'show' => 'Voir',
         'toggle_navigation' => 'Navigation',
+        'converter'         => 'Convertisseur de dévise',
     ],
 
     'backend' => [
@@ -141,11 +142,14 @@ return [
                 'noresult' => 'Aucun résultat trouvé pour ',
 
                 'table' => [
-                    'confirmed' => 'Occupation',
-                    'created' => 'Date transaction',
+                    'confirmed' => 'Confirmé',
+                    'created' => 'Date',
                     'email' => 'Email',
+                    'identity' => 'CIN / NIF',
+                    'gender' => 'Sexe',
+                    'occupation' => 'Occupation',
                     'id' => 'ID',
-                    'last_updated' => 'Date Mise à jour',
+                    'last_updated' => 'Mise à jour',
                     'name' => 'Nom',
                     'no_deactivated' => "Pas d'Clients désactivés",
                     'no_deleted' => "Pas d'Clients supprimés",

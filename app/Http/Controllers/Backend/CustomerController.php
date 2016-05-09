@@ -6,6 +6,7 @@ use App\Customer;
 use App\Transaction;
 use App\Http\Controllers\Controller;
 use Searchy;
+use Validator;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
@@ -65,26 +66,24 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //$customer = new Customer;
-//        $customer = Customer::firstOrNew(array(
-//            $number = $request->input['number'],
-//            $name       = $request->input['name'],
-//            $lastname   = $request->input['lastname'],
-//            $address    = $request->input['address'],
-//            $city       = $request->input['city'],
-//            $email      = $request->input['email'],
-//            $occupation = $request->input['occupation'],
-//            $users_id   = $request->input['users_id']
-//        ));
-
         $customers = new Customer;
         $customers->name = $request->name;
+        if (Input::hasFile('image')) {
+            $destinationPath = 'img'; // upload path
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+            Input::file('image')->move($destinationPath, $fileName);// uploading file to given path
+        }
         $customers = Customer::create(['name' => $request->name,
             'number' => $request->number,
             'lastname' => $request->lastname,
+            'cin' => $request->cin,
+            'sex' => $request->sex,
             'address' => $request->address,
             'occupation' => $request->occupation,
-            'user_id' => $request->user_id
+            'phone'     => $request->phone,
+            'user_id' => $request->user_id,
+            'image'   => '/img/'.$fileName,
                                     ]);
         return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
@@ -136,9 +135,16 @@ class CustomerController extends Controller
     {
         //$this->customers->update($id);
         $customer = Customer::find($id);
-        $customer->fill(Input::all());
+        $customer->fill(Input::except('image'));
+        if (Input::hasFile('image')){
+            $destinationPath = 'img'; // upload path
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+            Input::file('image')->move($destinationPath, $fileName);// uploading file to given path
+            $customer->update(['image' => '/img/'.$fileName]);
+            }
         $customer->save();
-        return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
+        return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.customers.updated'));
     }
 
     /**
@@ -150,19 +156,19 @@ class CustomerController extends Controller
     public function destroy($id, DeleteCustomerRequest $request)
     {
         $this->customers->destroy($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.customers.deleted'));
     }
 
     public function delete($id, PermanentlyDeleteCustomerRequest $request)
     {
         $this->customers->delete($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.customers.deleted_permanently'));
     }
 
     public function restore($id, RestoreCustomerRequest $request)
     {
         $this->customers->restore($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.customers.restored'));
     }
 
     /**
@@ -174,13 +180,13 @@ class CustomerController extends Controller
     public function mark($id, $status, MarkCustomerRequest $request)
     {
         $this->customers->mark($id, $status);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.customers.updated'));
     }
 
     public function deactivated()
     {
         return view('backend.deactivated')
-            ->withCustomers($this->customers->getUsersPaginated(25, 0));
+            ->withCustomers($this->customers->getCustomersPaginated(25, 0));
     }
 
     public function search()

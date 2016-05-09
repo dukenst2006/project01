@@ -44,6 +44,13 @@
             </div><!--form control-->
 
             <div class="form-group">
+                {!! Form::label('cin', trans('validation.attributes.backend.access.customers.lastname'), ['class' => 'col-lg-2 control-label']) !!}
+                <div class="col-lg-10">
+                    {!! Form::text('lastname', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.lastname')]) !!}
+                </div>
+            </div><!--form control-->
+
+            <div class="form-group">
                 {!! Form::label('occupation', trans('validation.attributes.backend.access.customers.occupation'), ['class' => 'col-lg-2 control-label']) !!}
                 <div class="col-lg-10">
                     {!! Form::text('occupation', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.occupation')]) !!}

@@ -43,6 +43,15 @@ return [
             'updated_password' => "Le mot de passe utilisateur a été mis à jour avec succès.",
         ],
 
+        'customers' => [
+            'created' => "Clients créé avec succès.",
+            'deleted' => "Clients supprimé avec succès.",
+            'deleted_permanently' => "L'Clients a été supprimé définitivement.",
+            'restored' => "L'Clients a été ré-activé.",
+            'updated' => "Clients mis à jour avec succès.",
+            'updated_password' => "Le mot de passe Clients a été mis à jour avec succès.",
+        ],
+
         'transactions' => [
             'created' => "Transaction créé avec succès.",
             'deleted' => "Transaction supprimé avec succès.",

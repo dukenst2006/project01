@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {!! Form::open(['route' => 'admin.customer.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
+    {!! Form::open(['route' => 'admin.customer.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'files'=>true]) !!}
 
     <div class="box box-success">
         <div class="box-header with-border">
@@ -25,7 +25,7 @@
             <div class="form-group">
                 {!! Form::label('number', trans('validation.attributes.backend.access.customers.number'), ['class' => 'col-lg-2 control-label']) !!}
                 <div class="col-lg-10">
-                    {!! Form::text('number', $accountNumber, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number'), 'value' => 'AAA-000001' ]) !!}
+                    {!! Form::text('number', $accountNumber, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('validation.attributes.backend.access.customers.number'), 'value' => 'AAA-000001' ]) !!}
                 </div>
             </div><!--form control-->
 
@@ -40,6 +40,20 @@
                 {!! Form::label('lastname', trans('validation.attributes.backend.access.customers.lastname'), ['class' => 'col-lg-2 control-label']) !!}
                 <div class="col-lg-10">
                     {!! Form::text('lastname', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.lastname')]) !!}
+                </div>
+            </div><!--form control-->
+
+            <div class="form-group">
+                {!! Form::label('cin', trans('labels.backend.access.customers.table.identity'), ['class' => 'col-lg-2 control-label']) !!}
+                <div class="col-lg-10">
+                    {!! Form::text('cin', null, ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.customers.table.identity')]) !!}
+                </div>
+            </div><!--form control-->
+
+            <div class="form-group">
+                {!! Form::label('sex', trans('labels.backend.access.customers.table.gender'), ['class' => 'col-lg-2 control-label']) !!}
+                <div class="col-lg-10">
+                    {!! Form::select('sex', array('M' => 'Masculin', 'F' => 'Feminin'), null, ['placeholder' => trans('labels.backend.access.customers.table.gender')]) !!}
                 </div>
             </div><!--form control-->
 
@@ -75,6 +89,13 @@
                 {!! Form::label('email', trans('validation.attributes.backend.access.users.email'), ['class' => 'col-lg-2 control-label']) !!}
                 <div class="col-lg-10">
                     {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.email')]) !!}
+                </div>
+            </div><!--form control-->
+
+            <div class="form-group">
+                {!! Form::label('image', trans('validation.attributes.backend.access.customers.image'), ['class' => 'col-lg-2 control-label']) !!}
+                <div class="col-lg-10">
+                    {!! Form::file('image') !!}
                 </div>
             </div><!--form control-->
 

@@ -197,6 +197,7 @@ return [
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
          */
         App\Providers\MacroServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
     ],
 
     /*
@@ -253,5 +254,6 @@ return [
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
         'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
+        'Alert' => UxWeb\SweetAlert\SweetAlert::class,
     ],
 ];

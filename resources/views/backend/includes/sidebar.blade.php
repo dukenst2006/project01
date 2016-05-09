@@ -38,8 +38,21 @@
             </li>
 
             @permission('view-access-management')
-                <li class="{{ Active::pattern('admin/access/*') }}">
-                    <a href="{!!url('admin/access/users')!!}"><i class="fa fa-unlock-alt"></i><span>{{ trans('menus.backend.access.title') }}</span></a>
+                <li class="{{ Active::pattern('admin/access/*') }} treeview">
+                    <a href="#"><i class="fa fa-unlock-alt"></i><span>{{ trans('menus.backend.access.title') }}</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu {{ Active::pattern('admin/access/*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
+                        <li class="{{ Active::pattern('admin/access/users') }}">
+                            <a href="{!! url('admin/access/users') !!}">{{ trans('menus.backend.access.users.main') }}</a>
+                        </li>
+                        <li class="{{ Active::pattern('admin/access/roles') }}">
+                            <a href="{!! url('admin/access/roles') !!}">{{ trans('menus.backend.access.roles.main') }}</a>
+                        </li>
+                        <li class="{{ Active::pattern('admin/access/roles/permissions#all-permissions') }}">
+                            <a href="{!! url('admin/access/roles/permissions#all-permissions') !!}">{{ trans('menus.backend.access.permissions.main') }}</a>
+                        </li>
+                    </ul>
                 </li>
             @endauth
 
@@ -96,6 +109,10 @@
                         <a href="{!! url('admin/log-viewer/logs') !!}">{{ trans('menus.backend.log-viewer.logs') }}</a>
                     </li>
                 </ul>
+            </li>
+            <!-- Setting link -->
+            <li class="{{ Active::pattern('admin/setting') }}">
+                <a href="{!! route('admin.settings') !!}"><i class="fa fa-gears"></i><span>{{ trans('menus.backend.sidebar.settings') }}</span></a>
             </li>
 
         </ul><!-- /.sidebar-menu -->

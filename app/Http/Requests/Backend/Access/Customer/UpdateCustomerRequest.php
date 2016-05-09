@@ -6,7 +6,7 @@ use App\Http\Requests\Request;
 
 /**
  * Class UpdateUserRequest
- * @package App\Http\Requests\Backend\Access\User
+ * @package App\Http\Requests\Backend\Access\customer
  */
 class UpdateCustomerRequest extends Request
 {
@@ -17,7 +17,7 @@ class UpdateCustomerRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('create-customers');
+        return access()->allow('update-customers');
     }
 
     /**
@@ -33,7 +33,7 @@ class UpdateCustomerRequest extends Request
             'lastname'              => 'required',
             'address'               => 'required',
             'phone'                  => 'required',
-            'email'                 => 'required|email|unique:customers',
+            'email'                 => 'email',
         ];
     }
 }
