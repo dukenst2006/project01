@@ -6,4 +6,5 @@
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; {!! date('Y') !!} <a href="http://thelemaque-dukens.com" target="_blank">MEC{{--{!! app_name() !!} --}}</a>.</strong> {{ trans('strings.backend.general.all_rights_reserved') }}
+
 </footer>

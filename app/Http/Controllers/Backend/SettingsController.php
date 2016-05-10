@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Settings;
+use App\Customer;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -72,5 +74,10 @@ class SettingsController extends Controller
     public function convert()
     {
        return dd(Input::all());
+    }
+
+    public function dashboard(){
+        $settings = Settings::all();
+            return view('backend.dashboard', compact('settings'));
     }
 }

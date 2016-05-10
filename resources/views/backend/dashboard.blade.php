@@ -2,12 +2,47 @@
 
 @section('page-header')
     <h1>
-        {!! app_name() !!}
+        {{--{!! app_name() !!}--}}
+        {{ $settings->app_name }}
         <small>{{ trans('strings.backend.dashboard.title') }}</small>
     </h1>
 @endsection
 
 @section('content')
+    <script language="JavaScript">
+        <!--
+        function euroConverter(){
+            document.converter.dollar.value = document.converter.euro.value * 1.470
+            document.converter.canadian.value = document.converter.euro.value * 0.717
+            document.converter.gourde.value = document.converter.euro.value * 15.192
+            document.converter.peso.value = document.converter.euro.value * 1.25
+        }
+        function gourdeConverter(){
+            document.converter.dollar.value = document.converter.gourde.value * 1.470
+            document.converter.euro.value = document.converter.gourde.value * 0.717
+            document.converter.canadian.value = document.converter.gourde.value * 165.192
+            document.converter.peso.value = document.converter.gourde.value * 165.192
+        }
+        function dollarConverter(){
+            document.converter.euro.value = document.converter.dollar.value * 0.680
+            document.converter.gourde.value = document.converter.dollar.value * 0.488
+            document.converter.canadian.value = document.converter.dollar.value * 112.36
+            document.converter.peso.value = document.converter.dollar.value * 0.36
+        }
+        function canadianConverter(){
+            document.converter.dollar.value = document.converter.canadian.value * 2.049
+            document.converter.euro.value = document.converter.canadian.value * 1.394
+            document.converter.gourde.value = document.converter.canadian.value * 230.27
+            document.converter.peso.value = document.converter.canadian.value * 230.27
+        }
+        function pesoConverter(){
+            document.converter.dollar.value = document.converter.peso.value * 0.0089
+            document.converter.canadian.value = document.converter.peso.value * 0.00434
+            document.converter.gourde.value = document.converter.peso.value * 0.00605
+            document.converter.euro.value = document.converter.peso.value * 0.00605
+        }
+        //-->
+    </script>
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('strings.backend.dashboard.welcome') }} {!! access()->user()->name !!}!</h3>
@@ -94,137 +129,95 @@
                         </div><!-- /.nav-tabs-custom -->
 
 
-                        <!-- Calendar -->
-                        <div class="box box-solid bg-green-gradient">
-                            <div class="box-header">
-                                <i class="fa fa-calendar"></i>
-                                <h3 class="box-title">Calendar</h3>
-                                <!-- tools box -->
-                                <div class="pull-right box-tools">
-                                    <!-- button with a dropdown -->
-                                    <div class="btn-group">
-                                        <button class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i></button>
-                                        <ul class="dropdown-menu pull-right" role="menu">
-                                            <li><a href="#">Add new event</a></li>
-                                            <li><a href="#">Clear events</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">View calendar</a></li>
-                                        </ul>
-                                    </div>
-                                    <button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                    <button class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                                </div><!-- /. tools -->
-                            </div><!-- /.box-header -->
-                            <div class="box-body no-padding">
-                                <!--The calendar -->
-                                <div id="calendar" style="width: 100%"></div>
-                            </div><!-- /.box-body -->
-                            <div class="box-footer text-black">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <!-- Progress bars -->
-                                        <div class="clearfix">
-                                            <span class="pull-left">Task #1</span>
-                                            <small class="pull-right">90%</small>
-                                        </div>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-green" style="width: 90%;"></div>
-                                        </div>
-
-                                        <div class="clearfix">
-                                            <span class="pull-left">Task #2</span>
-                                            <small class="pull-right">70%</small>
-                                        </div>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-green" style="width: 70%;"></div>
-                                        </div>
-                                    </div><!-- /.col -->
-                                    <div class="col-sm-6">
-                                        <div class="clearfix">
-                                            <span class="pull-left">Task #3</span>
-                                            <small class="pull-right">60%</small>
-                                        </div>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-green" style="width: 60%;"></div>
-                                        </div>
-
-                                        <div class="clearfix">
-                                            <span class="pull-left">Task #4</span>
-                                            <small class="pull-right">40%</small>
-                                        </div>
-                                        <div class="progress xs">
-                                            <div class="progress-bar progress-bar-green" style="width: 40%;"></div>
-                                        </div>
-                                    </div><!-- /.col -->
-                                </div><!-- /.row -->
-                            </div>
-                        </div><!-- /.box -->
-
-
-
-
                     </section><!-- /.Left col -->
                     <!-- right col (We are only adding the ID to make the widgets sortable)-->
                     <section class="col-lg-5 connectedSortable">
                         <!-- solid sales graph -->
-                        <div class="box box-solid bg-teal-gradient">
-                            <div class="box-header">
-                                <i class="fa fa-th"></i>
-                                <h3 class="box-title">Sales Graph</h3>
-                                <div class="box-tools pull-right">
-                                    <button class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                    <button class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                                </div>
-                            </div>
-                            <div class="box-body border-radius-none">
-                                <div class="chart" id="line-chart" style="height: 250px;"></div>
-                            </div><!-- /.box-body -->
-                        </div><!-- /.box -->
-
-
+                        <div class="box-header">
+                            <i class="fa fa-refresh"></i>
+                            <h3 class="box-title">{{ trans('labels.general.converter') }}</h3>
+                            <!-- tools box -->
+                            <div class="pull-right box-tools">
+                                <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                            </div><!-- /. tools -->
+                        </div>
                         <!-- quick Converter -->
                         <div class="box box-info">
-                            <div class="box-header">
-                                <i class="fa fa-refresh"></i>
-                                <h3 class="box-title">{{ trans('labels.general.converter') }}</h3>
-                                <!-- tools box -->
-                                <div class="pull-right box-tools">
-                                    <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                                </div><!-- /. tools -->
-                            </div>
-
                             <div class="box-body">
-                                <div class="form-group">
-                                    <div class="form-group">
-                                        {!! Form::number('us_rate', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => 'Montant à Convertir']) !!}
-                                    </div>
-                                </div><!--form control-->
-                                {{--{!! Form::open(route(['admin.converter','role' => 'form', 'method' => 'post'])) !!}--}}
-                                <div class="form-group">
-                                    {!! Form::open(['route' => 'admin.converter', 'class' => 'form-control', 'role' => 'form', 'method' => 'post']) !!}
-                                    <div class="form-group">
-                                        {{--{!! Form::label('number', 'Devise à convertir', ['class' => 'col-lg-2 control-label']) !!}--}}
-                                        {!! Form::select('currency', array('USD' => 'Dollars americain', 'CAD' => 'Dollars americain', 'DOM' => 'Peso Dominicain', 'EUR' => 'Euro' ), null, ['placeholder' => 'Choisir Devise a convertir ... ']) !!}
-                                    </div>
-                                </div><!--form control-->
-                                <div class="form-group">
-                                    <input type="email" class="form-control" name="emailto" placeholder="Email to:">
-                                </div>
-                                {{--<div class="form-group">--}}
-                                    {{--<input type="text" class="form-control" name="subject" placeholder="Subject">--}}
-                                {{--</div>--}}
-                                {{--<div>--}}
-                                    {{--<textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>--}}
-                                {{--</div>--}}
-                            </div>
-                            <div class="pull-right">
-                                <input type="submit" class="btn btn-success btn-md" value="Convertir" />
-                                <i class="fa fa-arrow-circle-right"></i>
-                            </div>
-                            {!! Form::close() !!}
-                            {{--<div class="box-footer clearfix">--}}
-                                {{--<button class="pull-right btn btn-default" id="sendEmail">Convertir <i class="fa fa-arrow-circle-right"></i></button>--}}
-                            {{--</div>--}}
+                                <form name="converter">
+                                <table class="table table-bordered" border="0">
+                                    <tr>
+                                        <th style="width: 10px">Symbole</th>
+                                        <th>Dévise</th>
+                                        <th>Progression %</th>
+                                        <th style="width: 40px">Taux</th>
+                                    </tr>
+                                    <tr>
+                                        <td>HTG</td>
+                                        <td><input type="number" step ="any" name="gourde" onChange="gourdeConverter()" /></td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-red">1.00</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>USD</td>
+                                        <td><input type="number" step ="any" name="dollar" onChange="dollarConverter()" /></td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-success" style="width: 85%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-green">{{ $settings ->us_rate }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>EURO</td>
+                                        <td><input type="number" step ="any" name="euro" onChange="euroConverter()" /></td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-yellow">{{ $settings ->euro_rate }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CAD</td>
+                                        <td><input type="number" step ="any" name="canadian" onChange="canadianConverter()" /></td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-light-blue">{{ $settings ->canadian_rate }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>PESO</td>
+                                        <td><input type="number" step ="any" name="peso" onChange="pesoConverter()" /></td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-green">{{ $settings ->peso_rate }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div class="pull-left">
+                                                <input type="button" class="btn btn-info btn-md" value="Convertir" />
+                                                <i class="fa fa-arrow-circle-right"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                                </form>
+                            </div><!-- /.box-body -->
                         </div>
 
                     </section><!-- right col -->
@@ -233,4 +226,5 @@
             </section><!-- /.content -->
         </div><!-- /.box-body -->
     </div><!--box box-success-->
+
 @endsection
