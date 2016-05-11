@@ -32,5 +32,7 @@ return [
     'min_balance'    => 'Minimum balance',
     'alert_success'    => 'La configuration a été mis à jour avec succes.',
     'alert_error'    => 'Erreur dans la mis à jour',
-    'config'        => 'Configuration'
+    'config'        => 'Configuration',
+    'ballance_all' => 'Montant total',
+    'customer_all' => 'Total Client',
 ];

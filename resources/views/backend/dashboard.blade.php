@@ -12,34 +12,34 @@
     <script language="JavaScript">
         <!--
         function euroConverter(){
-            document.converter.dollar.value = document.converter.euro.value * 1.470
-            document.converter.canadian.value = document.converter.euro.value * 0.717
-            document.converter.gourde.value = document.converter.euro.value * 15.192
-            document.converter.peso.value = document.converter.euro.value * 1.25
+            document.converter.dollar.value = document.converter.euro.value * 1.1389
+            document.converter.canadian.value = document.converter.euro.value /  0.6793
+            document.converter.gourde.value = document.converter.euro.value * 71.083
+            document.converter.peso.value = document.converter.euro.value * 52.217
         }
         function gourdeConverter(){
-            document.converter.dollar.value = document.converter.gourde.value * 1.470
-            document.converter.euro.value = document.converter.gourde.value * 0.717
-            document.converter.canadian.value = document.converter.gourde.value * 165.192
-            document.converter.peso.value = document.converter.gourde.value * 165.192
+            document.converter.dollar.value = document.converter.gourde.value / {{ $settings ->us_rate }};
+            document.converter.euro.value = document.converter.gourde.value / {{ $settings ->euro_rate }};
+            document.converter.canadian.value = document.converter.gourde.value / {{ $settings ->canadian_rate }};
+            document.converter.peso.value = document.converter.gourde.value / {{ $settings ->peso_rate }};
         }
         function dollarConverter(){
-            document.converter.euro.value = document.converter.dollar.value * 0.680
-            document.converter.gourde.value = document.converter.dollar.value * 0.488
-            document.converter.canadian.value = document.converter.dollar.value * 112.36
-            document.converter.peso.value = document.converter.dollar.value * 0.36
+            document.converter.euro.value = document.converter.dollar.value / 1.1381
+            document.converter.gourde.value = document.converter.dollar.value * {{ $settings ->us_rate }};
+            document.converter.canadian.value = document.converter.dollar.value / 0.7733
+            document.converter.peso.value = document.converter.dollar.value / 0.02178
         }
         function canadianConverter(){
-            document.converter.dollar.value = document.converter.canadian.value * 2.049
-            document.converter.euro.value = document.converter.canadian.value * 1.394
-            document.converter.gourde.value = document.converter.canadian.value * 230.27
-            document.converter.peso.value = document.converter.canadian.value * 230.27
+            document.converter.dollar.value = document.converter.canadian.value * 0.7732
+            document.converter.euro.value = document.converter.canadian.value * 0.6793
+            document.converter.gourde.value = document.converter.canadian.value * {{ $settings ->canadian_rate }};
+            document.converter.peso.value = document.converter.canadian.value * 35,2911
         }
         function pesoConverter(){
-            document.converter.dollar.value = document.converter.peso.value * 0.0089
-            document.converter.canadian.value = document.converter.peso.value * 0.00434
-            document.converter.gourde.value = document.converter.peso.value * 0.00605
-            document.converter.euro.value = document.converter.peso.value * 0.00605
+            document.converter.dollar.value = document.converter.peso.value * 0.0218
+            document.converter.canadian.value = document.converter.peso.value / 35.2911
+            document.converter.gourde.value = document.converter.peso.value * {{ $settings ->peso_rate }};
+            document.converter.euro.value = document.converter.peso.value * 0.0192
         }
         //-->
     </script>
@@ -60,11 +60,11 @@
                         <!-- small box -->
                         <div class="small-box bg-aqua">
                             <div class="inner">
-                                <h3>150</h3>
-                                <p>New Orders</p>
+                                <p style="float:left;">{{ $settings->currency.' ' }}</p><h3> {{ $totalAmount.'.00' }}</h3>
+                                <p>{{ trans('settings.ballance_all') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="ion ion-cash"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
@@ -86,13 +86,13 @@
                         <!-- small box -->
                         <div class="small-box bg-yellow">
                             <div class="inner">
-                                <h3>44</h3>
-                                <p>User Registrations</p>
+                                <h3>{{ $totalCustomer }}</h3>
+                                <p>{{ trans('settings.customer_all') }}</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-person-add"></i>
+                                <i class="ion ion-person-stalker"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ url('admin/customer') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div><!-- ./col -->
                     <div class="col-lg-3 col-xs-6">
