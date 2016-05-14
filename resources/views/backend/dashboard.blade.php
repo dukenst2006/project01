@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-
+@section ('title',  $settings->app_name )
 @section('page-header')
     <h1>
         {{--{!! app_name() !!}--}}
@@ -74,7 +74,7 @@
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <h3>53<sup style="font-size: 20px">%</sup></h3>
-                                <p>Bounce Rate</p>
+                                <p>Transactions</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -100,7 +100,7 @@
                         <div class="small-box bg-red">
                             <div class="inner">
                                 <h3>65</h3>
-                                <p>Unique Visitors</p>
+                                <p>Utilisateurs</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
@@ -117,9 +117,9 @@
                         <div class="nav-tabs-custom">
                             <!-- Tabs within a box -->
                             <ul class="nav nav-tabs pull-right">
-                                <li><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-                                <li class="active"><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-                                <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
+                                <li class="active"><a href="#revenue-chart" data-toggle="tab">{{ trans('settings.graph') }}</a></li>
+                                <li><a href="#sales-chart" data-toggle="tab">{{ trans('settings.withdral&deposit') }}</a></li>
+                                <li class="pull-left header"><i class="fa fa-inbox"></i>{{ trans('settings.transactions') }}</li>
                             </ul>
                             <div class="tab-content no-padding">
                                 <!-- Morris chart - Sales -->

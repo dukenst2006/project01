@@ -35,4 +35,7 @@ return [
     'config'        => 'Configuration',
     'ballance_all' => 'Montant total',
     'customer_all' => 'Total Client',
+    'transactions' => 'Transactions',
+    'withdral&deposit' => 'Depot vs Retrait',
+    'graph' => 'Graphe',
 ];
