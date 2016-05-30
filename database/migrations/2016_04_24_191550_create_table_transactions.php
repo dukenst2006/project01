@@ -37,4 +37,5 @@ class CreateTableTransactions extends Migration
     {
         Schema::drop('transactions');
     }
+
 }

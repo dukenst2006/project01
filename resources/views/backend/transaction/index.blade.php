@@ -25,6 +25,7 @@
                     <thead>
                     <tr>
                         <th class="visible-lg">{{ trans('labels.backend.access.transactions.table.created') }}</th>
+                        <th>{{ trans('labels.backend.access.transactions.table.account_number') }}</th>
                         <th>{{ trans('labels.backend.access.transactions.table.type') }}</th>
                         <th>{{ trans('labels.backend.access.transactions.table.name') }}</th>
                         <th>{{ trans('labels.backend.access.transactions.table.amount') }}</th>
@@ -38,9 +39,10 @@
                     <tbody>
                     @foreach ($transactions as $transaction)
                         <tr>
-                            <td class="visible-lg">{!! $transaction->created_at->diffForHumans() !!}</td>
+                            <td class="visible-lg">{!! $transaction->created_at !!}</td>
+                            <td>{!! App\Customer::find($transaction->customer_id)->number !!}</td>
                             <td>{!! App\Transactiontype::find($transaction->transactiontype_id)->name !!}</td>
-                            <td>{!! App\Customer::find($transaction->customer_id)->name !!}</td>
+                            <td>{!! App\Customer::find($transaction->customer_id)->name.' '.App\Customer::find($transaction->customer_id)->lastname !!}</td>
                             <td>{!! $transaction->amount !!}</td>
                             <td>{!! App\Models\Access\User\User::find($transaction->user_id)->name !!}</td>
                             <td>{!! $transaction->reference !!}</td>
@@ -63,7 +65,7 @@
             </div>
             {{-- Old Method used --}}
             <div class="pull-left">
-                {!! App\Transaction::count() !!} {{ trans_choice('labels.backend.access.customers.table.total', App\Transaction::count()) }}
+                {!! App\Transaction::count() !!} {{ trans_choice('labels.backend.access.transactions.transac', App\Transaction::count()) }}
             </div>
 
             {{--<div class="pull-left">--}}

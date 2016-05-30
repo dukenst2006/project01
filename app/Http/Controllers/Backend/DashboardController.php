@@ -23,8 +23,10 @@ class DashboardController extends Controller
         $settings = Settings::first();
         $totalAmount = Transaction::all()->sum('amount');
         $totalCustomer = Customer::all()->count();
+        $totalDeposit = Transaction::where('transactiontype_id',1)->sum('amount');
+        $totalWithdrawl = Transaction::where('transactiontype_id',2)->sum('amount');
         //$settings = DB::table('settings')->first();
         //dd($settings->us_rate);
-        return view('backend.dashboard', compact('settings', 'totalAmount', 'totalCustomer'));
+        return view('backend.dashboard', compact('settings', 'totalAmount', 'totalCustomer', 'totalDeposit','totalWithdrawl'));
     }
 }

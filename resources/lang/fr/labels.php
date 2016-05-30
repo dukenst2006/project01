@@ -19,6 +19,9 @@ return [
         'no' => 'Non',
         'custom' => 'Custom', // TODO TRANSLATION
         'actions' => 'Actions',
+        'chartdeposit' => 'Depot',
+        'chartwithdrawl' => 'Retrait',
+        'chartloan' => 'Pret',
         'buttons' => [
             'save' => 'Enregistrer',
             'update' => 'Mettre à jour',
@@ -161,6 +164,7 @@ return [
 
             'transactions' => [
                 'active' => 'Transactions actives',
+                'transac' => 'Transactions',
                 'create' => 'Créer une transaction',
                 'deactivated' => 'Transactions désactivées',
                 'deleted' => 'Transactions supprimées',
@@ -184,6 +188,7 @@ return [
                     'authorised' => 'Autorisé par',
                     'reference' => 'Reference No',
                      'total' => 'Transaction total|Transactions total',
+                    'account_number' => 'No. Compte',
                 ],
             ],
 
