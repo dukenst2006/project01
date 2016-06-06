@@ -159,6 +159,8 @@ return [
                     'other_permissions' => 'Adresse',
                     'roles' => 'Telephone',
                     'total' => 'Client total|Clients total',
+                    'ballance' => 'Ballance',
+                    'account_open_date' => 'Date ouverture'
                 ],
             ],
 
@@ -175,6 +177,8 @@ return [
                 'deposit' => 'Ajouter Dépot',
                 'withdrawl' => 'Faire un Rétrait',
                 'date' => 'Date Transaction',
+                'transfert' => 'Transfert',
+                'acount' => 'Compte à credité',
 
                 'table' => [
                     'confirmed' => 'Confirmé',

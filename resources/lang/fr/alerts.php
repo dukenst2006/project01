@@ -59,6 +59,12 @@ return [
             'restored' => "Transaction a été ré-activé.",
             'updated' => "Transaction mis à jour avec succès.",
             'failed'  => "Ce compte n'a pas assez de fond pour effectuer cette transaction",
+        ],
+        'backup' => [
+            'success' => "Le Back up a été effectué avec succès.",
+            'fail' => "Le Back up a échoué, veuillez essayer a nouveau!",
         ]
+
+
     ],
 ];

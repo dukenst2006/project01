@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Settings;
 use App\Transaction;
 use App\Transactiontype;
 use App\Customer;
@@ -86,13 +87,47 @@ class TransactionController extends Controller
     {
         $balance = DB::table('transactions')->where('customer_id', '=', $request->customer_id)->sum('amount');
         $amountrequest = abs($request->amount);
+        $settings = Settings::first();
         // Test if customer have enouth fund to make the withdrawl
-        if($balance > $amountrequest) {
+        if($balance - $settings->mini_bal > $amountrequest) {
             $withdrawl = Transaction::create(['amount' => abs($request->amount) * -1,
                 'reference' => $request->reference,
                 'created_at' => $request->created_at,
                 'transactiontype_id' => $request->transactiontype_id,
                 'customer_id' => $request->customer_id,
+                'user_id' => $request->user_id
+            ]);
+            return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.created'));
+        } else
+        {
+            return redirect()->back()->withFlashDanger(trans('alerts.backend.transactions.failed'));
+        }
+
+    }
+
+    // Transfert Method
+    public function transfert(StoreTransactionRequest $request)
+    {
+        $balance = DB::table('transactions')->where('customer_id', '=', $request->customer_id)->sum('amount');
+        $amountrequest = abs($request->amount);
+        $settings = Settings::first();
+        //$data = $request->all();
+        //dd($data);
+        // Test if customer have enouth fund to make the withdrawl
+        if($balance - $settings->mini_bal > $amountrequest) {
+            $withdrawl = Transaction::create(['amount' => abs($request->amount) * -1,
+                'reference' => $request->reference,
+                'created_at' => $request->created_at,
+                'transactiontype_id' => $request->transactiontype_id,
+                'customer_id' => $request->customer_id,
+                'user_id' => $request->user_id
+            ]);
+
+            $deposit = Transaction::create(['amount' => abs($request->amount),
+                'reference' => $request->reference,
+                'created_at' => $request->created_at,
+                'transactiontype_id' => 4,
+                'customer_id'       =>  $request->number,
                 'user_id' => $request->user_id
             ]);
             return redirect()->back()->withFlashSuccess(trans('alerts.backend.transactions.created'));

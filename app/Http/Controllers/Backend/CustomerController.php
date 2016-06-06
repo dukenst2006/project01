@@ -104,7 +104,8 @@ class CustomerController extends Controller
         $balance = Transaction::where('customer_id', '=',$id)->sum('amount');
         $TransactionRef = 'REF-'. rand();
         //dd($TransactionRef);
-        return view('backend.profile', compact('customer','transactions', 'balance', 'TransactionRef'));
+        $accountNumber = Customer::lists('number', 'id');
+        return view('backend.profile', compact('customer','transactions', 'balance', 'TransactionRef','accountNumber'));
     }
 
     /**
