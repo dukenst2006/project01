@@ -25,8 +25,9 @@
                             <tr>
                                 <th>{{ trans('labels.backend.access.customers.table.id') }}</th>
                                 <th>{{ trans('labels.backend.access.customers.table.name') }}</th>
+                                <th>{{ trans('labels.backend.access.customers.table.number') }}</th>
                                 <th>{{ trans('labels.backend.access.customers.table.email') }}</th>
-                                <th>{{ trans('labels.backend.access.customers.table.confirmed') }}</th>
+                                <th>{{ trans('labels.backend.access.customers.table.occupation') }}</th>
                                 <th>{{ trans('labels.backend.access.customers.table.roles') }}</th>
                                 <th>{{ trans('labels.backend.access.customers.table.other_permissions') }}</th>
                                 <th class="visible-lg">{{ trans('labels.backend.access.customers.table.created') }}</th>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>{!! $customersearch->id !!}</td>
                                     <td>{{ link_to_route('admin.customer.profile', $customersearch->name.' '.$customersearch->lastname, $customersearch->id ) }} </td>
+                                    <td>{!! $customersearch->number !!}</td>
                                     <td>{!! link_to("mailto:".$customersearch->email, $customersearch->email) !!}</td>
                                     <td>{!! $customersearch->occupation !!}</td>
                                     <td>{!! $customersearch->phone !!}</td>

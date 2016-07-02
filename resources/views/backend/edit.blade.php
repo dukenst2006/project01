@@ -98,14 +98,16 @@
                     {!! Form::file('image') !!}
                 </div>
                 <div class="form-group">
-                <img class="profile-user-img img-responsive img-circle" with="200px" height="200px" src=" {{ $customer->image }}">
+                <img class="profile-user-img img-responsive img-circle" width="200px" height="200px" src=" {{ $customer->image }}">
                 </div>
             </div><!--form control-->
 
             <div class="form-group">
                 <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.active') }}</label>
                 <div class="col-lg-1">
-                    <input type="checkbox" value="1" name="status" checked="checked" />
+                    {{--<input type="checkbox" value="{{ $customer->status }}" name="status" checked="" />--}}
+                    <input type='hidden' value='0' name='status'>
+                    <input type="checkbox" value="1" name="status" {{$customer->status == 1 ? 'checked' : ''}} />
                 </div>
             </div><!--form control-->
             {{ Form::hidden('users_id', auth()->id()) }}
@@ -125,7 +127,6 @@
         </div><!-- /.box-body -->
     </div><!--box-->
 
-    {!! Form::close() !!}
 @stop
 
 @section('after-scripts-end')

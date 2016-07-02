@@ -128,26 +128,27 @@
                         <li class="user-header">
                             <img src="{!! access()->user()->image !!}" class="img-circle" alt="User Image" />
                             <p>
-                                {!! access()->user()->name !!} - {{ trans('roles.web_developer') }}
-                                <small>{{ trans('strings.backend.general.member_since') }} XX/XX/XXXX</small>
+                                {!! access()->user()->name !!} {!! access()->user()->lastname !!}
+                                {{--{{ trans('roles.web_developer') }}--}}
+                                <small>{{ trans('strings.backend.general.member_since') }} {!! access()->user()->created_at->toFormattedDateString() !!}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Link</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Link</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Link</a>
-                            </div>
+                            {{--<div class="col-xs-4 text-center">--}}
+                                {{--<a href="#">Link</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-xs-4 text-center">--}}
+                                {{--<a href="#">Link</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col-xs-4 text-center">--}}
+                                {{--<a href="#">Link</a>--}}
+                            {{--</div>--}}
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">{{ trans('navs.backend.button') }}</a>
+                                <a href="{{ url('/admin/access/users/'.access()->user()->id.'/edit') }}" class="btn btn-default btn-flat">{{ trans('navs.backend.edit') }}</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{!! route('auth.logout') !!}" class="btn btn-default btn-flat">{{ trans('navs.general.logout') }}</a>

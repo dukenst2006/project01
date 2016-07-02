@@ -42,7 +42,7 @@ return [
             'are_you_sure' => 'Etes-vous sûr?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
             'continue' => 'Continue',
-            'member_since' => 'Membre depuis',
+            'member_since' => 'Utilisateur depuis',
             'search_placeholder' => 'Rechercher...',
 
             'see_all' => [

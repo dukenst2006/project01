@@ -14,7 +14,7 @@ return [
     */
 
     'backend' => [
-        'button' => 'Bouton',
+        'edit' => 'Editer',
     ],
 
     'general' => [

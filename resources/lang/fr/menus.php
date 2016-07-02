@@ -68,6 +68,12 @@ return [
                 'deposit' => 'Faire un dépot',
                 'withdrawl' => 'Faire un retrait',
             ],
+
+            'report' => [
+                'main' => 'Rapport',
+                'bymonth' => 'Rapport par moi',
+                'bydate' => 'Rapport par datte',
+            ],
         ],
 
         'log-viewer' => [

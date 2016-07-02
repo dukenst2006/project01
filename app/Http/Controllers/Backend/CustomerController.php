@@ -74,6 +74,11 @@ class CustomerController extends Controller
             $fileName = rand(11111, 99999) . '.' . $extension; // renameing image
             Input::file('image')->move($destinationPath, $fileName);// uploading file to given path
         }
+        if (Input::hasFile('image')) {
+            $fileName = $fileName;
+        } else{
+            $fileName = 'avatar.png';
+        }
         $customers = Customer::create(['name' => $request->name,
             'number' => $request->number,
             'lastname' => $request->lastname,
@@ -83,7 +88,7 @@ class CustomerController extends Controller
             'occupation' => $request->occupation,
             'phone'     => $request->phone,
             'user_id' => $request->user_id,
-            'image'   => '/img/'.$fileName,
+            'image'   => '/img/'. $fileName,
                                     ]);
         return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
@@ -135,6 +140,7 @@ class CustomerController extends Controller
     public function update($id, UpdateCustomerRequest $request)
     {
         //$this->customers->update($id);
+//        dd($request->status);
         $customer = Customer::find($id);
         $customer->fill(Input::except('image'));
         if (Input::hasFile('image')){
@@ -145,6 +151,13 @@ class CustomerController extends Controller
             $customer->update(['image' => '/img/'.$fileName]);
             }
         $customer->save();
+        return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.customers.updated'));
+    }
+
+    public function disableCustomer($id){
+//        $customer = Customer::find($id);
+        $customer = Customer::where('id', '=', $id)->first();
+        $customer->status ? $customer->update(['status' => '0']) : $customer->update(['status' => '1']);
         return redirect()->route('admin.customer.index')->withFlashSuccess(trans('alerts.backend.customers.updated'));
     }
 
@@ -188,6 +201,7 @@ class CustomerController extends Controller
     {
         return view('backend.deactivated')
             ->withCustomers($this->customers->getCustomersPaginated(25, 0));
+
     }
 
     public function search()

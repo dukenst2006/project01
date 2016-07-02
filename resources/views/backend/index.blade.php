@@ -26,6 +26,7 @@
                     <tr>
                         <th>{{ trans('labels.backend.access.customers.table.id') }}</th>
                         <th>{{ trans('labels.backend.access.customers.table.name') }}</th>
+                        <th>{{ trans('labels.backend.access.customers.table.number') }}</th>
                         <th>{{ trans('labels.backend.access.customers.table.identity') }}</th>
                         <th>{{ trans('labels.backend.access.customers.table.gender') }}</th>
                         <th>{{ trans('labels.backend.access.customers.table.occupation') }}</th>
@@ -42,12 +43,13 @@
                             <td>{!! $customer->id !!}</td>
                             <td>{{ link_to_route('admin.customer.profile', $customer->name.' '.$customer->lastname, $customer->id ) }} </td>
                             {{--<td>{!! link_to("mailto:".$customer->email, $customer->email) !!}</td>--}}
+                            <td>{!! $customer->number !!}</td>
                             <td>{!! $customer->cin !!}</td>
                             <td>{!! $customer->sex !!}</td>
                             <td>{!! $customer->occupation !!}</td>
                             <td>{!! $customer->phone !!}</td>
                             <td>{!! $customer->address !!}</td>
-                            <td class="visible-lg">{!! $customer->created_at !!}</td>
+                            <td class="visible-lg">{!! $customer->created_at->toFormattedDateString() !!}</td>
                             <td class="visible-lg">{!! $customer->updated_at->diffForHumans() !!}</td>
                             {{--<td>{!! $customer->action_buttons !!}</td>--}}
                             <td>

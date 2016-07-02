@@ -126,6 +126,7 @@ return [
             ],
             'customers' => [
                 'active' => 'Clients actifs',
+                'deactivate' => 'Clients Desactivés',
                 'all_permissions' => 'Toutes les permissions',
                 'change_password' => 'Modifier le mot de passe',
                 'change_password_for' => 'Modifier le mot de passe pour :user',
@@ -143,6 +144,7 @@ return [
                 'recent_transaction' => 'Transactions récentes',
                 'search' => 'Resultat de la recherche.',
                 'noresult' => 'Aucun résultat trouvé pour ',
+                'alert' => 'Client desactivé, pour effectuer des transactions il faut etre actif',
 
                 'table' => [
                     'confirmed' => 'Confirmé',
@@ -160,7 +162,10 @@ return [
                     'roles' => 'Telephone',
                     'total' => 'Client total|Clients total',
                     'ballance' => 'Ballance',
-                    'account_open_date' => 'Date ouverture'
+                    'account_open_date' => 'Date ouverture',
+                    'number' => 'No. Compte',
+                    'deactivated' => 'Désactivé client',
+                    'activated'   => 'Activé le client'
                 ],
             ],
 

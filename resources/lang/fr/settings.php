@@ -33,9 +33,11 @@ return [
     'alert_success'    => 'La configuration a été mis à jour avec succes.',
     'alert_error'    => 'Erreur dans la mis à jour',
     'config'        => 'Configuration',
-    'ballance_all' => 'Montant total',
+    'ballance_all' => 'Montant total en caisse',
     'customer_all' => 'Total Client',
-    'transactions' => 'Transactions',
+    'transactions' => 'Transactions Aujourd\'hui',
     'withdral&deposit' => 'Depot vs Retrait',
     'graph' => 'Graphe',
+    'customer_disable' => 'Clients desactivés',
+    'todayDepot'    => 'Total Depot Aujourd\'hui',
 ];

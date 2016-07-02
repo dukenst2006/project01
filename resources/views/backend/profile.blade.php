@@ -4,8 +4,8 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.customers.management') }}
-        <small>{{ trans('labels.backend.access.customers.create') }}</small>
+        {{ trans('labels.backend.access.transactions.management') }}
+        <small style="color: red;">{{ $customer->status ? ''  : trans('labels.backend.access.customers.alert') }}</small>
     </h1>
 @endsection
 
@@ -18,7 +18,7 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="{{ $customer->image }}" alt="User profile picture" width="300px">
+                        <img class="profile-user-img img-responsive img-circle" width="250px" style="align:center;" src="{{ $customer->image }}" alt="User profile picture" width="300px">
                         <h3 class="profile-username text-center">{{ $customer->name .' '. $customer->lastname }}</h3>
                         <p class="text-muted text-center"><b style="font-size: large">{{$customer->number}}</b></p>
 
@@ -37,7 +37,7 @@
                             </li>
                         </ul>
 
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                        <a href="{{ url('/admin/customer/'.$customer->id).'/disable' }}" class="btn {{$customer->status == 1 ? 'btn-primary' : 'btn-danger'}} btn-block"><b>{{ $customer->status == 1 ? trans('labels.backend.access.customers.table.deactivated'): trans('labels.backend.access.customers.table.activated') }}</b></a>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 
@@ -102,14 +102,14 @@
                                     <div class="form-group">
                                         {!! Form::label('created_at', trans('labels.backend.access.transactions.date'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            {!! Form::date('created_at', \Carbon\Carbon::now(), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number')]) !!}
+                                            {!! Form::date('created_at', \Carbon\Carbon::now(), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                         </div>
                                     </div><!--form control-->
 
                                     <div class="form-group">
                                         {!! Form::label('amount', trans('labels.backend.access.transactions.table.amount'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount')]) !!}
+                                            {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                         </div>
                                     </div><!--form control-->
 
@@ -117,7 +117,7 @@
                                         {!! Form::label('reference', trans('labels.backend.access.transactions.table.reference'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
 
-                                            {!! Form::text('reference', $TransactionRef , ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.reference')]) !!}
+                                            {!! Form::text('reference', $TransactionRef , ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.reference'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                         </div>
                                     </div><!--form control-->
 
@@ -157,14 +157,14 @@
                                     <div class="form-group">
                                         {!! Form::label('created_at', trans('labels.backend.access.transactions.date'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            {!! Form::date('created_at', \Carbon\Carbon::now(), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number')]) !!}
+                                            {!! Form::date('created_at', \Carbon\Carbon::now(), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                         </div>
                                     </div><!--form control-->
 
                                     <div class="form-group">
                                         {!! Form::label('amount', trans('labels.backend.access.transactions.table.amount'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
-                                            {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount')]) !!}
+                                            {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                         </div>
                                     </div><!--form control-->
 
@@ -172,7 +172,7 @@
                                         {!! Form::label('reference', trans('labels.backend.access.transactions.table.reference'), ['class' => 'col-lg-2 control-label']) !!}
                                         <div class="col-lg-10">
 
-                                            {!! Form::text('reference', $TransactionRef , ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.reference')]) !!}
+                                            {!! Form::text('reference', $TransactionRef , ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.reference'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                         </div>
                                     </div><!--form control-->
 
@@ -212,7 +212,7 @@
                                 <div class="form-group">
                                     {!! Form::label('created_at', trans('labels.backend.access.transactions.date'), ['class' => 'col-lg-2 control-label']) !!}
                                     <div class="col-lg-10">
-                                        {!! Form::date('created_at', \Carbon\Carbon::now(), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number')]) !!}
+                                        {!! Form::date('created_at', \Carbon\Carbon::now(), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.customers.number'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                     </div>
                                 </div><!--form control-->
 
@@ -226,7 +226,7 @@
                                 <div class="form-group">
                                     {!! Form::label('amount', trans('labels.backend.access.transactions.table.amount'), ['class' => 'col-lg-2 control-label']) !!}
                                     <div class="col-lg-10">
-                                        {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount')]) !!}
+                                        {!! Form::number('amount', null, ['class' => 'form-control', 'step' => 'any', 'placeholder' => trans('labels.backend.access.transactions.table.amount'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                     </div>
                                 </div><!--form control-->
 
@@ -234,7 +234,7 @@
                                     {!! Form::label('reference', trans('labels.backend.access.transactions.table.reference'), ['class' => 'col-lg-2 control-label']) !!}
                                     <div class="col-lg-10">
 
-                                        {!! Form::text('reference', $TransactionRef , ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.reference')]) !!}
+                                        {!! Form::text('reference', $TransactionRef , ['class' => 'form-control', 'placeholder' => trans('labels.backend.access.transactions.table.reference'), $customer->status ? "" : 'disabled' => 'disabled']) !!}
                                     </div>
                                 </div><!--form control-->
 

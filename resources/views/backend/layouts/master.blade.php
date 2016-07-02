@@ -20,6 +20,7 @@
         <link href="{{ URL::asset('css/font-awesome.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('css/sweetalert.css') }}" rel="styleshe">
         <link href="{{ URL::asset('plugins/morris/morris.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('plugins/datepicker/datepicker.css') }}" rel="stylesheet">
         @yield('after-styles-end')
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -28,6 +29,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
+        {{--{{ HTML::script('js/jquery-1.10.2.min.js.js') }}--}}
+        {{--{{ HTML::script('js/custom.js') }}--}}
     </head>
     <body class="skin-{!! config('backend.theme') !!}">
     <div class="wrapper">
@@ -67,6 +70,7 @@
     {{ HTML::script('js/moment.min.js') }}
     {{ HTML::script('js/raphael-min.js') }}
     {{ HTML::script('js/sweetalert.min.js') }}
+    {{ HTML::script('plugins/datepicker/bootstrap-datepicker.js') }}
     @include('sweet::alert')
     @yield('script_chart')
     @yield('after-scripts-end')

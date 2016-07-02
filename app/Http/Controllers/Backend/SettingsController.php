@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests\Backend\Access\Settings\StoreSettingsRequest;
 
 use App\Http\Requests;
+use Artisan;
 
 class SettingsController extends Controller
 {
@@ -79,5 +80,12 @@ class SettingsController extends Controller
     public function dashboard(){
         $settings = Settings::all();
             return view('backend.dashboard', compact('settings'));
+    }
+    
+    public function backup(){
+        Artisan::call('backup:run', [
+            '--only-files' => true,
+        ]);
+        return redirect('admin/dashboard')->withFlashSuccess(trans('alerts.backend.backup.success'));
     }
 }

@@ -9,7 +9,7 @@ class Customer extends Model
 {
     use SoftDeletes;
     //MASS ASSIGNMENT
-    protected $fillable = array('number', 'name', 'lastname', 'dob', 'cin', 'sex', 'occupation', 'city', 'address', 'phone', 'email', 'image', 'user_id');
+    protected $fillable = array('number', 'name', 'lastname', 'dob', 'cin', 'sex', 'occupation', 'city', 'address', 'phone', 'email', 'image', 'user_id','status');
 
 
     /**

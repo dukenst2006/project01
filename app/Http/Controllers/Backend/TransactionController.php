@@ -32,6 +32,13 @@ class TransactionController extends Controller
    {
          $this->transactions      = $transactions;
    }
+    public function isActive($id){
+        if (Customer::find($id)->where('status', '=', 1)->get()){
+            return true;
+        } else{
+            return false;
+        }
+    }
 
     public function index()
     {
@@ -69,9 +76,6 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        //$deposit = new Transaction;
-        //$deposit->amount = $request->amount;
-        //dd($request->created_at);
         $deposit = Transaction::create(['amount' => abs($request->amount),
             'reference' => $request->reference,
             'created_at' => $request->created_at,
@@ -84,6 +88,7 @@ class TransactionController extends Controller
 
     // withdrawl Method
     public function withdrawl(StoreTransactionRequest $request)
+        
     {
         $balance = DB::table('transactions')->where('customer_id', '=', $request->customer_id)->sum('amount');
         $amountrequest = abs($request->amount);
@@ -118,7 +123,7 @@ class TransactionController extends Controller
             $withdrawl = Transaction::create(['amount' => abs($request->amount) * -1,
                 'reference' => $request->reference,
                 'created_at' => $request->created_at,
-                'transactiontype_id' => $request->transactiontype_id,
+                'transactiontype_id' => 4, // $request->transactiontype_id,
                 'customer_id' => $request->customer_id,
                 'user_id' => $request->user_id
             ]);

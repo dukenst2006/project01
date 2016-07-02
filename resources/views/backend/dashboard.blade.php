@@ -73,8 +73,8 @@
                         <!-- small box -->
                         <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                                <p>Transactions</p>
+                                <p style="float:left;">{{ $settings->currency.' ' }}</p><h3>{{ $totalDeposiToday }}</h3>
+                                <p>{{ trans('settings.todayDepot') }}</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -99,13 +99,13 @@
                         <!-- small box -->
                         <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>65</h3>
-                                <p>Utilisateurs</p>
+                                <h3>{{ $totalCustomerdisable }}</h3>
+                                <p>{{ trans('settings.customer_disable') }}</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="{{ url('admin/customer/deactivated') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div><!-- ./col -->
                 </div><!-- /.row -->
@@ -119,7 +119,7 @@
                             <ul class="nav nav-tabs pull-right">
                                 <li><a href="#revenue-chart" data-toggle="tab">{{ trans('settings.graph') }}</a></li>
                                 <li class="active"><a href="#sales-chart" data-toggle="tab">{{ trans('settings.withdral&deposit') }}</a></li>
-                                <li class="pull-left header"><i class="fa fa-inbox"></i>{{ trans('settings.transactions') }}</li>
+                                <li class="pull-left header"><i class="fa fa-inbox"></i>{{ trans('settings.transactions') }} / {{ \Carbon\Carbon::now('America/Port-au-Prince') }}</li>
                             </ul>
                             <div class="tab-content no-padding">
                                 <!-- Morris chart - Sales -->
@@ -259,11 +259,13 @@
             var donut = new Morris.Donut({
                 element: 'sales-chart',
                 resize: true,
-                colors: ["#3c8dbc", "#f56954", "#00a65a"],
+                colors: ["#3c8dbc", "#f56954"],
+//                colors: ["#3c8dbc", "#f56954", "#00a65a"],
                 data: [
-                    {label: "{{ trans('labels.general.chartdeposit') }} ", value: {{  $totalDeposit }} },
-                    {label: " {{ trans('labels.general.chartwithdrawl') }} ", value: {{ $totalWithdrawl}} },
-                    {label: " {{ trans('labels.general.chartloan') }} ", value: 0}
+                    {label: "{{ trans('labels.general.chartdeposit') }} ", value: {{ $totalDeposiToday }} },
+                    {label: " {{ trans('labels.general.chartwithdrawl') }} ", value: {{ $totalWithdrawlToday}} },
+                    {{--{label: " Transfert ", value: {{ $totalTransfert}} }--}}
+                    {{--{label: " {{ trans('labels.general.chartloan') }} ", value:0 }--}}
                 ],
                 hideHover: 'auto'
             });

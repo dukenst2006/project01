@@ -66,12 +66,15 @@
                     <li class="{{ Active::pattern('admin/customer') }}">
                         <a href="{!! url('admin/customer') !!}">{{ trans('menus.backend.access.customers.all') }}</a>
                     </li>
+                    <li class="{{ Active::pattern('admin/customer') }}">
+                        <a href="{!! url('admin/customer/deactivated') !!}">{{ trans('menus.backend.access.customers.deactivated') }}</a>
+                    </li>
                     <li class="{{ Active::pattern('admin/customer/create') }}">
                         <a href="{!! url('admin/customer/create') !!}">{{ trans('menus.backend.access.customers.create') }}</a>
                     </li>
-                    <li class="{{ Active::pattern('admin/customer/deactivated') }}">
-                        <a href="{!! url('admin/customer/deactivated') !!}">{{ trans('menus.backend.access.customers.deactivated') }}</a>
-                    </li>
+                    {{--<li class="{{ Active::pattern('admin/customer/deactivated') }}">--}}
+                        {{--<a href="{!! url('admin/customer/deactivated') !!}">{{ trans('menus.backend.access.customers.deactivated') }}</a>--}}
+                    {{--</li>--}}
                 </ul>
             </li>
             @endauth
@@ -86,12 +89,35 @@
                     <li class="{{ Active::pattern('admin/transaction/all') }}">
                         <a href="{!! url('admin/transaction/all') !!}">{{ trans('menus.backend.access.transactions.all') }}</a>
                     </li>
-                    <li class="{{ Active::pattern('admin/transaction/deposit') }}">
-                        <a href="{!! url('admin/transaction/deposit') !!}">{{ trans('menus.backend.access.transactions.deposit') }}</a>
+                    {{--<li class="{{ Active::pattern('admin/transaction/deposit') }}">--}}
+                        {{--<a href="{!! url('admin/transaction/deposit') !!}">{{ trans('menus.backend.access.transactions.deposit') }}</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="{{ Active::pattern('admin/transaction/withdrawl') }}">--}}
+                        {{--<a href="{!! url('admin/transaction/withdrawl') !!}">{{ trans('menus.backend.access.transactions.withdrawl') }}</a>--}}
+                    {{--</li>--}}
+                </ul>
+            </li>
+            @endauth
+
+            @roles(['Administrator', 'Director', 'Cashier'])
+            <li class="{{ Active::pattern('admin/report*') }} treeview">
+                <a href="#"><i class="fa fa-bar-chart"></i>
+                    <span>{{ trans('menus.backend.access.report.main') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu {{ Active::pattern('admin/report/*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/report/bymonth') }}">
+                        <a href="{!! url('admin/report/bymonth') !!}">{{ trans('menus.backend.access.report.bymonth') }}</a>
                     </li>
-                    <li class="{{ Active::pattern('admin/transaction/withdrawl') }}">
-                        <a href="{!! url('admin/transaction/withdrawl') !!}">{{ trans('menus.backend.access.transactions.withdrawl') }}</a>
+                    <li class="{{ Active::pattern('admin/report/bydate') }}">
+                        <a href="{!! url('admin/report/bydate') !!}">{{ trans('menus.backend.access.report.bydate') }}</a>
                     </li>
+                    {{--<li class="{{ Active::pattern('admin/transaction/deposit') }}">--}}
+                    {{--<a href="{!! url('admin/transaction/deposit') !!}">{{ trans('menus.backend.access.transactions.deposit') }}</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="{{ Active::pattern('admin/transaction/withdrawl') }}">--}}
+                    {{--<a href="{!! url('admin/transaction/withdrawl') !!}">{{ trans('menus.backend.access.transactions.withdrawl') }}</a>--}}
+                    {{--</li>--}}
                 </ul>
             </li>
             @endauth
